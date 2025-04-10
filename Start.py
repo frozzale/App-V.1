@@ -29,10 +29,9 @@ st.title('BMI Rechner')
 
 name = st.session_state.get('name')
 st.markdown(f"✨ Hallo {name}! ✨")
-st.markdown("🏃 Die Anwendung ermöglicht es Ihnen, Ihren BMI zu berechnen und im Zeitverlauf zu verfolgen 📊")
         
 # Add some health advice
 st.info("""Der BMI ist ein Screening-Tool, aber keine Diagnose für Körperfett oder Gesundheit. 
 Bitte konsultieren Sie einen Arzt für eine vollständige Beurteilung.""")
 
-st.write("Diese App wurde von Samuel Wehrli im Rahmen des Moduls 'BMLD Informatik 2' an der ZHAW entwickelt.")
+st.write("Diese App wurde von Alessia Frozzi (frozzale@students.zhaw.ch), Alicia Cardoso (cardoali@students.zhaw.ch) und Elena Müller (muellel3@students.zhaw.ch) entwikelt.")
