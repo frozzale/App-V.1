@@ -13,4 +13,11 @@
 2. Anzeigefläche der fun facts
 3. Verschiedene Themen zum anwählen/ oder random 
 
-# Version 4.0
+# Version 4.0 - Eigene Memes erstellen
+1. Meme designer - Ein vorgegebenes Bild mit eigenem Text beschriften
+2. Button zum herunterladen
+
+# Version 5.0 - Stadt, Land, Fluss
+1. Anzeigefläche, die random verschiedene Kategorien anzeigt
+2. Auswahl von 4-6 Kategorien
+3. A-Z randomisierter Anzeiger
