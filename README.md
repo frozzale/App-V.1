@@ -7,6 +7,6 @@ Für den Leistungsnachweis in Informatik entwickeln wir eine App mit dem man sic
 
 Emails:
 
-muellel3@students.zhaw.ch; 
-frozzale@students.zhaw.ch; 
-cardoali@students.zhaw.ch
+- muellel3@students.zhaw.ch
+- frozzale@students.zhaw.ch
+- cardoali@students.zhaw.ch
