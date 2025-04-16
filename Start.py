@@ -30,8 +30,7 @@ st.title('BMI Rechner')
 name = st.session_state.get('name')
 st.markdown(f"✨ Hallo {name}! ✨")
         
-# Add some health advice
-st.info("""Der BMI ist ein Screening-Tool, aber keine Diagnose für Körperfett oder Gesundheit. 
-Bitte konsultieren Sie einen Arzt für eine vollständige Beurteilung.""")
+# Add some advice
+st.info("""Stadt, Land, Fluss""")
 
 st.write("Diese App wurde von Alessia Frozzi (frozzale@students.zhaw.ch), Alicia Cardoso (cardoali@students.zhaw.ch) und Elena Müller (muellel3@students.zhaw.ch) entwikelt.")

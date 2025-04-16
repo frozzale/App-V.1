@@ -4,6 +4,7 @@ Stadt, Land, Fluss:
 2. Button, zum Generieren (A-Z)
 3. Eingabe der Punktezahl pro Runde mit automatischer Total Anzeige
 4. Kommentar, dass das Spiel mit Stift und Papier gespielt wird
+5. Fixe 5 Kategorien: Stadt, Land, Fluss, Tier, Marke
 
 # Version 2.0 - Kategorien
 1. Kategorien zum anwählen, oder randomisierungs Button 
