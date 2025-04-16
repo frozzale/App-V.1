@@ -8,6 +8,7 @@ from utils.data_manager import DataManager
 from utils import helpers
 import random
 import string
+import pandas as pd
 
 # Funktion des Buchstabengenerators
 def generiere_buchstabe():
@@ -20,15 +21,25 @@ if st.button("Buchstaben generieren"):
     buchstabe = generiere_buchstabe()
     st.write(f"Der zufällig generierte Buchstabe ist: {buchstabe}")
 
-# Punkte-Tabelle
-st.subheader("Punkte-Tabelle")
+st.subheader("Deine Kategorien lauten:")
+st.write("Stadt, Land, Fluss, Tier und Marke.")
 
-# Eingabefelder für Punkte
+# Punkte-Tabelle für einen Spieler und mehrere Runden
+st.subheader("Meine Punkte pro Runde")
+
+# Anzahl der Runden
+anzahl_runden = st.number_input("Anzahl der Runden", min_value=1, step=1, value=5, key="anzahl_runden")
+
+# Erstelle eine Tabelle mit Auswahlmöglichkeiten für die Punkte
 punkte = []
-for i in range(1, 6):  # Beispiel: 5 Spieler:innen
-    punkt = st.number_input(f"Punkte für Spieler:in {i}", min_value=0, step=1, key=f"punkte_{i}")
+for runde in range(1, anzahl_runden + 1):
+    punkt = st.selectbox(
+        f"Punkte für Runde {runde}",
+        options=[0, 1, 5],  # Nur 0, 1 oder 5 Punkte erlaubt
+        key=f"punkte_runde_{runde}"
+    )
     punkte.append(punkt)
 
-# Total berechnen
+# Berechne das Total der Punkte
 total = sum(punkte)
 st.write(f"**Total der Punkte:** {total}")
