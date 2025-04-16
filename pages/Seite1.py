@@ -7,3 +7,4 @@ import streamlit as st
 from utils.data_manager import DataManager
 from utils import helpers
 #from functions.kalorienverbrauch_calculator import calculate_calories
+
