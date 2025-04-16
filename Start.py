@@ -31,6 +31,7 @@ name = st.session_state.get('name')
 st.markdown(f"✨ Hallo {name}! ✨")
         
 # Add some advice
-st.info("""Stadt, Land, Fluss""")
+st.info("""Stadt, Land, Fluss
+        Ein Spiel für Jung und Alt. Wie viele Punkte kannst du sammeln?""")
 
 st.write("Diese App wurde von Alessia Frozzi (frozzale@students.zhaw.ch), Alicia Cardoso (cardoali@students.zhaw.ch) und Elena Müller (muellel3@students.zhaw.ch) entwikelt.")
