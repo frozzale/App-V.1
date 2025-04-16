@@ -26,12 +26,23 @@ data_manager.load_user_data(
 import streamlit as st
 
 st.title('Stadt, Land, Fluss')
+st.write("In der ersten Version dieser App kannst du den Buchstaben für's Spiel generieren und die Punkte der Spieler:innen eintragen.")
 
 name = st.session_state.get('name')
 st.markdown(f"✨ Hallo {name}! ✨")
         
 # Add some advice
-st.info("""Stadt, Land, Fluss
-        Ein Spiel für Jung und Alt. Wie viele Punkte kannst du sammeln?""")
+st.info("""Diese App ist noch in der Entwicklung und deshalb nicht abschliessend.""")
+st.markdown("""
+        Informationen zum Spiel: 
+        - Das Spiel wird auf Papier gespielt.
+        - Es gibt 5 Kategorien: Stadt, Land, Fluss, Tier und Marke.
+        - Der Buchstabe wird zufällig generiert.
+        - Versuche so schnell wie möglich zu sein und einzigartige Worte zu finden.
+        - Die Punkteverteilung ist wie folgt:
+            - 5 Punkte für ein einzigartiges Wort
+            - 1 Punkt für ein Wort, das auch andere Spieler:innen haben
+            - 0 Punkte für kein Wort
+        """)
 
 st.write("Diese App wurde von Alessia Frozzi (frozzale@students.zhaw.ch), Alicia Cardoso (cardoali@students.zhaw.ch) und Elena Müller (muellel3@students.zhaw.ch) entwikelt.")
