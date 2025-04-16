@@ -19,3 +19,16 @@ st.subheader("Buchstabengenerator")
 if st.button("Buchstaben generieren"):
     buchstabe = generiere_buchstabe()
     st.write(f"Der zufällig generierte Buchstabe ist: {buchstabe}")
+
+# Punkte-Tabelle
+st.subheader("Punkte-Tabelle")
+
+# Eingabefelder für Punkte
+punkte = []
+for i in range(1, 6):  # Beispiel: 5 Spieler:innen
+    punkt = st.number_input(f"Punkte für Spieler:in {i}", min_value=0, step=1, key=f"punkte_{i}")
+    punkte.append(punkt)
+
+# Total berechnen
+total = sum(punkte)
+st.write(f"**Total der Punkte:** {total}")
