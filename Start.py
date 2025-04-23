@@ -46,13 +46,18 @@ st.markdown("""
             - 0 Punkte für kein Wort
         """)
 
-# Button zur Unterseite "Stadt, Land, Fluss"
-if st.button("Zur Unterseite 'Stadt, Land, Fluss'"):
-    st.experimental_set_query_params(page="Stadt, Land, Fluss")
+# Navigation zwischen Hauptseite und Unterseite
+page = st.session_state.get("page", "main")
 
-# Überprüfen, ob die Unterseite aufgerufen wurde
-query_params = st.query_params
-if query_params.get("page") == ["Stadt, Land, Fluss"]:
+# Button zur Unterseite "Stadt, Land, Fluss"
+if page == "main":
+    if st.button("Zur Unterseite 'Stadt, Land, Fluss'"):
+        st.session_state["page"] = "Stadt, Land, Fluss"
+
+# Logik für die Unterseite
+if page == "Stadt, Land, Fluss":
     st.write("Willkommen auf der Unterseite 'Stadt, Land, Fluss'!")
+    if st.button("Zurück zur Hauptseite"):
+        st.session_state["page"] = "main"
 
 st.write("Diese App wurde von Alessia Frozzi (frozzale@students.zhaw.ch), Alicia Cardoso (cardoali@students.zhaw.ch) und Elena Müller (muellel3@students.zhaw.ch) entwickelt.")
