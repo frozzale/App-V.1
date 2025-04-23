@@ -11,3 +11,6 @@ Emails:
 - muellel3@students.zhaw.ch
 - frozzale@students.zhaw.ch
 - cardoali@students.zhaw.ch
+
+# Link zur App:
+https://app-v1-alessia-elena-alicia.streamlit.app/ 
