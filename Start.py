@@ -46,8 +46,12 @@ st.markdown("""
             - 0 Punkte für kein Wort
         """)
 
-# Navigation zwischen Hauptseite und Unterseite
-page = st.session_state.get("page", "main")
+# Initialisiere den Schlüssel "page" in st.session_state, falls er nicht existiert
+if "page" not in st.session_state:
+    st.session_state["page"] = "main"
+
+# Aktuelle Seite aus dem Session State abrufen
+page = st.session_state["page"]
 
 # Button zur Unterseite "Stadt, Land, Fluss"
 if page == "main":
