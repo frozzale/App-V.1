@@ -26,10 +26,10 @@ data_manager.load_user_data(
 import streamlit as st
 
 st.title('Stadt, Land, Fluss')
-st.write("In der ersten Version dieser App kannst du den Buchstaben für's Spiel generieren und die Punkte der Spieler:innen eintragen.")
-
 name = st.session_state.get('name')
 st.markdown(f"✨ Hallo {name}! ✨")
+st.write("In der ersten Version dieser App kannst du den Buchstaben für's Spiel generieren und deine Punkte pro Runde eintragen. Die Punkte werden dann automatisch zusammengezählt.")
+
         
 # Add some advice
 st.info("""Diese App ist noch in der Entwicklung und deshalb nicht abschliessend.""")
@@ -38,6 +38,7 @@ st.markdown("""
         - Das Spiel wird auf Papier gespielt.
         - Es gibt 5 Kategorien: Stadt, Land, Fluss, Tier und Marke.
         - Der Buchstabe wird zufällig generiert.
+        - Der Spieler, der am schnellsten alles ausgefüllt hat, ruft "Stopp!".
         - Versuche so schnell wie möglich zu sein und einzigartige Worte zu finden.
         - Die Punkteverteilung ist wie folgt:
             - 5 Punkte für ein einzigartiges Wort
