@@ -25,13 +25,15 @@ data_manager.load_user_data(
 # Here starts the actual app, which was developed previously
 import streamlit as st
 
+# Initialisiere den Seitenstatus
+if "page" not in st.session_state:
+    st.session_state["page"] = "main"
+
+
 st.title('Stadt, Land, Fluss')
-name = st.session_state.get('name')
+name = st.session_state.get('name', 'Gast')
 st.markdown(f"✨ Hallo {name}! ✨")
 st.write("In der ersten Version dieser App kannst du den Buchstaben für's Spiel generieren und deine Punkte pro Runde eintragen. Die Punkte werden dann automatisch zusammengezählt.")
-
-        
-# Add some advice
 st.info("""Diese App ist noch in der Entwicklung und deshalb nicht abschliessend.""")
 st.markdown("""
         Informationen zum Spiel: 
@@ -44,7 +46,7 @@ st.markdown("""
             - 5 Punkte für ein einzigartiges Wort
             - 1 Punkt für ein Wort, das auch andere Spieler:innen haben
             - 0 Punkte für kein Wort
-        """)
+    """)
 
 
 st.write("Diese App wurde von Alessia Frozzi (frozzale@students.zhaw.ch), Alicia Cardoso (cardoali@students.zhaw.ch) und Elena Müller (muellel3@students.zhaw.ch) entwickelt.")

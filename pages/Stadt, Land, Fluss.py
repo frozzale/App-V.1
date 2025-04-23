@@ -10,9 +10,6 @@ import random
 import string
 import pandas as pd
 
-# Funktion des Buchstabengenerators
-def generiere_buchstabe():
-    return random.choice(string.ascii_uppercase)
 
 # Streamlit App
 st.subheader("Buchstabengenerator")
