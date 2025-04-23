@@ -46,4 +46,14 @@ st.markdown("""
             - 0 Punkte für kein Wort
         """)
 
-st.write("Diese App wurde von Alessia Frozzi (frozzale@students.zhaw.ch), Alicia Cardoso (cardoali@students.zhaw.ch) und Elena Müller (muellel3@students.zhaw.ch) entwikelt.")
+# Button zur Unterseite "Stadt, Land, Fluss"
+if st.button("Zur Unterseite 'Stadt, Land, Fluss'"):
+    st.experimental_set_query_params(page="Stadt, Land, Fluss")
+    st.experimental_rerun()
+
+# Überprüfen, ob die Unterseite aufgerufen wurde
+query_params = st.experimental_get_query_params()
+if query_params.get("page") == ["Stadt, Land, Fluss"]:
+    st.write("Willkommen auf der Unterseite 'Stadt, Land, Fluss'!")
+
+st.subheader("Diese App wurde von Alessia Frozzi (frozzale@students.zhaw.ch), Alicia Cardoso (cardoali@students.zhaw.ch) und Elena Müller (muellel3@students.zhaw.ch) entwickelt.")
