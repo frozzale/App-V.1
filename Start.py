@@ -48,7 +48,7 @@ st.markdown("""
 
 # Button zur Unterseite "Stadt, Land, Fluss"
 if st.button("Zur Unterseite 'Stadt, Land, Fluss'"):
-    st.query_params(page="Stadt, Land, Fluss")
+    st.experimental_set_query_params(page="Stadt, Land, Fluss")
 
 # Überprüfen, ob die Unterseite aufgerufen wurde
 query_params = st.query_params
