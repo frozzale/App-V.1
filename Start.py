@@ -52,7 +52,7 @@ if st.button("Zur Unterseite 'Stadt, Land, Fluss'"):
     st.experimental_rerun()
 
 # Überprüfen, ob die Unterseite aufgerufen wurde
-query_params = st.query_params()
+query_params = st.experimental_get_query_params()
 if query_params.get("page") == ["Stadt, Land, Fluss"]:
     st.write("Willkommen auf der Unterseite 'Stadt, Land, Fluss'!")
 
