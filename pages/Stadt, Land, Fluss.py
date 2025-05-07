@@ -47,6 +47,7 @@ ausgewaehlte_kategorien = st.multiselect(
     default=[],
     max_selections=6
 )
+st.subheader("oder")
 
 # Zufällige Auswahl von 6 Kategorien
 if st.button("Zufällige Kategorien generieren"):
