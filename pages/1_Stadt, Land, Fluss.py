@@ -10,16 +10,6 @@ import random
 import string
 import pandas as pd
 
-# Function to generate a random letter
-def generiere_buchstabe():
-    return random.choice(string.ascii_uppercase)
-
-# Streamlit App
-st.subheader("Buchstabengenerator")
-
-if st.button("Buchstaben generieren"):
-    buchstabe = generiere_buchstabe()
-    st.write(f"Der zufällig generierte Buchstabe ist: {buchstabe}")
 
 
 # Liste der Kategorien mit Übertiteln
@@ -65,6 +55,23 @@ if ausgewaehlte_kategorien:
 else:
     st.info("Bitte wähle bis zu 6 Kategorien aus oder klicke auf den Button, um zufällige Kategorien zu generieren.")
 
+# Funktion zum Speichern der Daten
+def speichere_spieldaten(kategorien, punkte):
+    if "spieldaten" not in st.session_state:
+        st.session_state["spieldaten"] = []
+    st.session_state["spieldaten"].append({"Kategorien": kategorien, "Punkte": punkte})
+
+# Function to generate a random letter
+def generiere_buchstabe():
+    return random.choice(string.ascii_uppercase)
+
+# Streamlit App
+st.subheader("Buchstabengenerator")
+
+if st.button("Buchstaben generieren"):
+    buchstabe = generiere_buchstabe()
+    st.write(f"Der zufällig generierte Buchstabe ist: {buchstabe}")
+
 # Punkte-Tabelle für einen Spieler und mehrere Runden
 st.subheader("Meine Punkte pro Runde")
 
@@ -86,3 +93,8 @@ for runde in range(1, anzahl_runden + 1):
 # Berechne das Total der Punkte
 total = sum(punkte)
 st.write(f"**Total der Punkte:** {total}")
+
+# Button zum Beenden der Runde
+if st.button("Runde beenden"):
+    speichere_spieldaten(ausgewaehlte_kategorien, punkte)
+    st.success("Die Spieldaten wurden gespeichert! Gehe zur nächsten Seite, um die Ergebnisse zu sehen.")
