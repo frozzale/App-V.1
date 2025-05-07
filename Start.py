@@ -45,7 +45,7 @@ st.markdown("""
         - Die Punkteverteilung ist wie folgt:
             - 5 Punkte für ein einzigartiges Wort
             - 1 Punkt für ein Wort, das auch andere Spieler:innen haben
-            - 0 Punkte für kein Wort
+            - 0 Punkte für kein Wort oder ein falsches Wort
     """)
 
 
