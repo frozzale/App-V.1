@@ -21,8 +21,45 @@ if st.button("Buchstaben generieren"):
     buchstabe = generiere_buchstabe()
     st.write(f"Der zufällig generierte Buchstabe ist: {buchstabe}")
 
-st.subheader("Deine Kategorien lauten:")
-st.write("Stadt, Land, Fluss, Tier und Marke.")
+
+# Liste der Kategorien mit Übertiteln
+kategorien = {
+    "Geografie": ["Stadt", "Land", "Fluss", "Gebirge", "See"],
+    "Tiere": ["Säugetier", "Haustier", "Wildtier", "Reptil", "Vogel", "Fisch", "Insekt", "Hunderasse", "Meeresbewohner"],
+    "Pflanzen": ["Baum", "Blume", "Gemüse", "Obst", "Kraut"],
+    "Berufe": ["Beruf", "Arzt", "Lehrer", "Ingenieur", "Künstler", "Polizist"],
+    "Marken": ["Marke", "Auto", "Mode", "Technologie", "Lebensmittel", "Kosmetik"],
+    "Sport": ["Sportart", "Olympische Disziplin", "Extremsportarten", "Sportart ohne Ball"],
+    "Musik": ["Instrument", "Band", "Sänger", "Genre", "Lied"],
+    "Filme & Serien": ["Film", "Serie", "Schauspieler", "Regisseur", "Genre"],
+    "Essen & Trinken": ["Getränk", "Süßigkeit", "Hauptgericht", "Beilage", "Snack", "Pizzabelag", "Eissorte"],
+    "Prominenz": ["Schauspieler", "Sänger", "Fussballspieler", "Politiker", "Historische Persönlichkeit", "Film-/Serie-/Buch-Charakter"]
+} 
+
+# Streamlit App
+st.header("Stadt, Land, Fluss - Kategorienauswahl")
+
+# Auswahl der Kategorien
+st.subheader("Wähle 6 Kategorien aus:")
+ausgewaehlte_kategorien = st.multiselect(
+    "Kategorien auswählen:",
+    options=[f"{uebertitel}: {kategorie}" for uebertitel, kategorien_liste in kategorien.items() for kategorie in kategorien_liste],
+    default=[],
+    max_selections=6
+)
+
+# Zufällige Auswahl von 6 Kategorien
+if st.button("Zufällige Kategorien generieren"):
+    alle_kategorien = [f"{uebertitel}: {kategorie}" for uebertitel, kategorien_liste in kategorien.items() for kategorie in kategorien_liste]
+    ausgewaehlte_kategorien = random.sample(alle_kategorien, 6)
+
+# Anzeige der ausgewählten Kategorien
+if ausgewaehlte_kategorien:
+    st.subheader("Deine ausgewählten Kategorien:")
+    for kategorie in ausgewaehlte_kategorien:
+        st.write(f"- {kategorie}")
+else:
+    st.info("Bitte wähle bis zu 6 Kategorien aus oder klicke auf den Button, um zufällige Kategorien zu generieren.")
 
 # Punkte-Tabelle für einen Spieler und mehrere Runden
 st.subheader("Meine Punkte pro Runde")
