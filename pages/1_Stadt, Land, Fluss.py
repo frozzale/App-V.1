@@ -117,6 +117,6 @@ total = sum(punkte)
 st.write(f"**Total der Punkte:** {total}")
 
 # Button zum Beenden der Runde
-if st.button("Runde beenden"):
+if st.button("Spiel beenden"):
     speichere_spieldaten(ausgewaehlte_kategorien, punkte)
     st.success("Die Spieldaten wurden gespeichert! Gehe zur nächsten Seite, um die Ergebnisse zu sehen.")
