@@ -10,7 +10,20 @@ import random
 import string
 import pandas as pd
 
+def speichere_spieldaten(kategorien, punkte):
+    """
+    Speichert die Spieldaten in den Session State.
 
+    Args:
+        kategorien (list): Die ausgewählten Kategorien.
+        punkte (list): Die Punkte der aktuellen Runde.
+    """
+    if "spieldaten" not in st.session_state:
+        st.session_state["spieldaten"] = []
+
+    # Speichere die Daten als Dictionary
+    runden_daten = {"Kategorien": kategorien, "Punkte": punkte}
+    st.session_state["spieldaten"].append(runden_daten)
 
 # Liste der Kategorien mit Übertiteln
 kategorien = {
@@ -29,6 +42,13 @@ kategorien = {
     "Babyparty": ["Babynamen", "Könnte das erste Wort werden", "Geschmacksrichtung für Babybrei", "Hätte ich gerne als Kind gehabt"]
 } 
 
+# Initialisiere den Session State für die Kategorien
+if "ausgewaehlte_kategorien" not in st.session_state:
+    st.session_state["ausgewaehlte_kategorien"] = []
+
+if "buchstabe" not in st.session_state:
+    st.session_state["buchstabe"] = None
+
 # Streamlit App
 st.header("Stadt, Land, Fluss - Kategorienauswahl")
 
@@ -37,40 +57,42 @@ st.subheader("Wähle 6 Kategorien aus:")
 ausgewaehlte_kategorien = st.multiselect(
     "Kategorien auswählen:",
     options=[f"{uebertitel}: {kategorie}" for uebertitel, kategorien_liste in kategorien.items() for kategorie in kategorien_liste],
-    default=[],
+    default=st.session_state["ausgewaehlte_kategorien"],  # Lade die gespeicherten Kategorien
     max_selections=6
 )
+
+# Speichere die manuell ausgewählten Kategorien im Session State
+st.session_state["ausgewaehlte_kategorien"] = ausgewaehlte_kategorien
+
 st.subheader("oder")
 
 # Zufällige Auswahl von 6 Kategorien
 if st.button("Zufällige Kategorien generieren"):
     alle_kategorien = [f"{uebertitel}: {kategorie}" for uebertitel, kategorien_liste in kategorien.items() for kategorie in kategorien_liste]
-    ausgewaehlte_kategorien = random.sample(alle_kategorien, 6)
+    st.session_state["ausgewaehlte_kategorien"] = random.sample(alle_kategorien, 6)
 
 # Anzeige der ausgewählten Kategorien
-if ausgewaehlte_kategorien:
+if st.session_state["ausgewaehlte_kategorien"]:
     st.subheader("Deine ausgewählten Kategorien:")
-    for kategorie in ausgewaehlte_kategorien:
+    for kategorie in st.session_state["ausgewaehlte_kategorien"]:
         st.write(f"- {kategorie}")
 else:
     st.info("Bitte wähle bis zu 6 Kategorien aus oder klicke auf den Button, um zufällige Kategorien zu generieren.")
 
-# Funktion zum Speichern der Daten
-def speichere_spieldaten(kategorien, punkte):
-    if "spieldaten" not in st.session_state:
-        st.session_state["spieldaten"] = []
-    st.session_state["spieldaten"].append({"Kategorien": kategorien, "Punkte": punkte})
-
-# Function to generate a random letter
+# Funktion zum Generieren eines zufälligen Buchstabens
 def generiere_buchstabe():
     return random.choice(string.ascii_uppercase)
 
-# Streamlit App
-st.subheader("Buchstabengenerator")
-
+# Button zum Generieren eines Buchstabens
 if st.button("Buchstaben generieren"):
-    buchstabe = generiere_buchstabe()
-    st.write(f"Der zufällig generierte Buchstabe ist: {buchstabe}")
+    st.session_state["buchstabe"] = generiere_buchstabe()
+
+# Anzeige des generierten Buchstabens
+st.write("Dein zufälliger Buchstabe:")
+if st.session_state["buchstabe"]:
+    st.write(f"**{st.session_state['buchstabe']}**")
+else:
+    st.info("Drücke auf den Button, um einen Buchstaben zu generieren.")
 
 # Punkte-Tabelle für einen Spieler und mehrere Runden
 st.subheader("Meine Punkte pro Runde")
