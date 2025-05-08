@@ -18,10 +18,10 @@ if "spieldaten" in st.session_state and st.session_state["spieldaten"]:
 
     # Daten in ein DataFrame umwandeln
     daten = []
-    for runde, daten_runde in enumerate(spieldaten, start=1):
-        if "Kategorien" in daten_runde and "Punkte" in daten_runde:
-            for kategorie, punkt in zip(daten_runde["Kategorien"], daten_runde["Punkte"]):
-                daten.append({"Runde": runde, "Kategorie": kategorie, "Punkte": punkt})
+    for spiel, daten_spiel in enumerate(spieldaten, start=1):
+        if "Kategorien" in daten_spiel and "Punkte" in daten_spiel:
+            for kategorie, punkt in zip(daten_spiel["Kategorien"], daten_spiel["Punkte"]):
+                daten.append({"Spiel": spiel, "Kategorie": kategorie, "Punkte": punkt})
     if daten:
         df = pd.DataFrame(daten)
 
@@ -30,20 +30,20 @@ if "spieldaten" in st.session_state and st.session_state["spieldaten"]:
         st.write("Datentypen im DataFrame:", df.dtypes)
 
         # Sicherstellen, dass die Spalten die richtigen Datentypen haben
-        df["Runde"] = pd.to_numeric(df["Runde"], errors="coerce")
+        df["Spiel"] = pd.to_numeric(df["Spiel"], errors="coerce")
         df["Punkte"] = pd.to_numeric(df["Punkte"], errors="coerce")
 
         # Tabelle anzeigen
-        st.subheader("Ergebnisse der Runden")
+        st.subheader("Ergebnisse der Spiele")
         st.dataframe(df)
 
         # Horizontales Balkendiagramm: Punkte pro Runde
-        st.subheader("Punkteverteilung pro Runde")
+        st.subheader("Punkteverteilung pro Spiel")
         fig, ax = plt.subplots(figsize=(8, 5))
-        df.groupby("Runde")["Punkte"].sum().plot(kind="barh", ax=ax, color="skyblue", edgecolor="black")
-        ax.set_title("Punkte pro Runde", fontsize=14)
+        df.groupby("Spiel")["Punkte"].sum().plot(kind="barh", ax=ax, color="skyblue", edgecolor="black")
+        ax.set_title("Punkte pro Spiel", fontsize=14)
         ax.set_xlabel("Punkte", fontsize=12)
-        ax.set_ylabel("Runde", fontsize=12)
+        ax.set_ylabel("Spiel", fontsize=12)
         st.pyplot(fig)
 
         # Kreisdiagramm: Punkteverteilung nach Kategorien
@@ -57,11 +57,11 @@ if "spieldaten" in st.session_state and st.session_state["spieldaten"]:
         st.pyplot(fig)
 
         # Liniendiagramm: Punkteentwicklung über die Runden
-        st.subheader("Punkteentwicklung über die Runden")
+        st.subheader("Punkteentwicklung über die Spiele")
         fig, ax = plt.subplots(figsize=(8, 5))
-        df.groupby("Runde")["Punkte"].sum().plot(kind="line", ax=ax, marker="o", color="green", linewidth=2)
-        ax.set_title("Punkteentwicklung über die Runden", fontsize=14)
-        ax.set_xlabel("Runde", fontsize=12)
+        df.groupby("Spiel")["Punkte"].sum().plot(kind="line", ax=ax, marker="o", color="green", linewidth=2)
+        ax.set_title("Punkteentwicklung über die Spiele", fontsize=14)
+        ax.set_xlabel("Spiel", fontsize=12)
         ax.set_ylabel("Punkte", fontsize=12)
         ax.grid(True, linestyle="--", alpha=0.7)
         st.pyplot(fig)
