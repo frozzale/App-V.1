@@ -55,36 +55,3 @@ if "spieldaten" in st.session_state and st.session_state["spieldaten"]:
 else:
     st.info("Es wurden noch keine Spieldaten gespeichert.")
 
-# Überprüfen, ob Spieldaten vorhanden sind
-if "spieldaten" in st.session_state and st.session_state["spieldaten"]:
-    spieldaten = st.session_state["spieldaten"]
-
-    # Extrahiere die Buchstaben aus den Spieldaten
-    buchstaben = []
-    for spiel in spieldaten:
-        if "buchstabe" in spiel:
-            buchstaben.append(spiel["buchstabe"])
-
-    if buchstaben:
-        # Berechne die Häufigkeit jedes Buchstabens
-        buchstaben_df = pd.DataFrame(buchstaben, columns=["Buchstabe"])
-        buchstaben_prozent = buchstaben_df["buchstabe"].value_counts(normalize=True) * 100
-
-        # Erstelle ein Kreisdiagramm
-        st.subheader("Prozentuale Verteilung der gespielten Buchstaben")
-        fig, ax = plt.subplots()
-        buchstaben_prozent.plot(
-            kind="pie",
-            ax=ax,
-            autopct='%1.1f%%',
-            startangle=90,
-            cmap="tab20",
-            legend=False
-        )
-        ax.set_ylabel("")
-        ax.set_title("Verteilung der Buchstaben")
-        st.pyplot(fig)
-    else:
-        st.warning("Es wurden noch keine Buchstaben gespielt.")
-else:
-    st.info("Es wurden noch keine Spieldaten gespeichert.")
