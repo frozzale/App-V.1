@@ -244,3 +244,26 @@ class DataManager:
         
         st.session_state[session_state_key] = data_value
         self.save_data(session_state_key)
+
+    def append_record(self, session_state_key, record_dict):
+        """
+        Fügt einen neuen Datensatz zur CSV-Datei hinzu und aktualisiert den Session State.
+
+        Args:
+            session_state_key (str): Der Schlüssel im Session State, der die Daten enthält.
+            record_dict (dict): Der neue Datensatz, der hinzugefügt werden soll.
+        """
+        # Lade bestehende Daten aus der CSV-Datei
+        try:
+            df = pd.read_csv("data.csv")
+        except FileNotFoundError:
+            df = pd.DataFrame()  # Erstelle ein leeres DataFrame, wenn die Datei nicht existiert
+
+        # Füge den neuen Datensatz hinzu
+        df = df.append(record_dict, ignore_index=True)
+
+        # Speichere die aktualisierten Daten zurück in die CSV-Datei
+        df.to_csv("data.csv", index=False)
+
+        # Aktualisiere den Session State
+        st.session_state[session_state_key] = df

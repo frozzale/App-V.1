@@ -40,16 +40,6 @@ if "spieldaten" in st.session_state and st.session_state["spieldaten"]:
         ax.set_ylabel("Punkte")
         ax.grid(True, linestyle="--", alpha=0.7)
         st.pyplot(fig)
-
-        # Punkteverteilung (Kreisdiagramm)
-        st.subheader("Punkteverteilung nach Kategorien")
-        fig, ax = plt.subplots()
-        df.groupby("Kategorie")["Punkte"].sum().plot(
-            kind="pie", ax=ax, autopct='%1.1f%%', startangle=90, cmap="Pastel1", legend=False
-        )
-        ax.set_ylabel("")
-        ax.set_title("Punkteverteilung nach Kategorien")
-        st.pyplot(fig)
     else:
         st.warning("Es gibt keine Daten, um Grafiken zu erstellen.")
 else:

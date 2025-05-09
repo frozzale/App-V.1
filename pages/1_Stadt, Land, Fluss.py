@@ -129,6 +129,3 @@ if st.button("Spiel beenden"):
     speichere_spieldaten(ausgewaehlte_kategorien, punkte, anzahl_runden)
     st.success("Die Spieldaten wurden gespeichert! Gehe zur nächsten Seite, um die Ergebnisse zu sehen.")
 
-    # Speichere die Daten in der persistenten Speicherung
-    from utils.data_manager import DataManager
-    DataManager().append_record(session_state_key='data_df', record_dict=result)  # update data in session state and storage
