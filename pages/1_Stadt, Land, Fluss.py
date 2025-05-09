@@ -129,3 +129,4 @@ if st.button("Spiel beenden"):
     speichere_spieldaten(ausgewaehlte_kategorien, punkte, anzahl_runden)
     st.success("Die Spieldaten wurden gespeichert! Gehe zur nächsten Seite, um die Ergebnisse zu sehen.")
 
+
