@@ -54,4 +54,3 @@ if "spieldaten" in st.session_state and st.session_state["spieldaten"]:
         st.warning("Es gibt keine Daten, um Grafiken zu erstellen.")
 else:
     st.info("Es wurden noch keine Spieldaten gespeichert.")
-
