@@ -118,5 +118,16 @@ st.write(f"**Total der Punkte:** {total}")
 
 # Button zum Beenden der Runde
 if st.button("Spiel beenden"):
+    # Erstelle das Dictionary 'result' mit den aktuellen Daten
+    result = {
+        "Kategorien": ausgewaehlte_kategorien,
+        "Punkte": punkte
+    }
+    
+    # Speichere die Spieldaten im Session State
     speichere_spieldaten(ausgewaehlte_kategorien, punkte)
     st.success("Die Spieldaten wurden gespeichert! Gehe zur nächsten Seite, um die Ergebnisse zu sehen.")
+
+    # Speichere die Daten in der persistenten Speicherung
+    from utils.data_manager import DataManager
+    DataManager().append_record(session_state_key='data_df', record_dict=result)  # update data in session state and storage
