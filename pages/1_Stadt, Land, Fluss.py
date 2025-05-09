@@ -10,19 +10,20 @@ import random
 import string
 import pandas as pd
 
-def speichere_spieldaten(kategorien, punkte):
+def speichere_spieldaten(kategorien, punkte, runden):
     """
     Speichert die Spieldaten in den Session State.
 
     Args:
         kategorien (list): Die ausgewählten Kategorien.
         punkte (list): Die Punkte der aktuellen Runde.
+        runden (int): Die Anzahl der gespielten Runden.
     """
     if "spieldaten" not in st.session_state:
         st.session_state["spieldaten"] = []
 
     # Speichere die Daten als Dictionary
-    runden_daten = {"Kategorien": kategorien, "Punkte": punkte}
+    runden_daten = {"Kategorien": kategorien, "Punkte": punkte, "Runden": runden}
     st.session_state["spieldaten"].append(runden_daten)
 
 # Liste der Kategorien mit Übertiteln
@@ -125,7 +126,7 @@ if st.button("Spiel beenden"):
     }
     
     # Speichere die Spieldaten im Session State
-    speichere_spieldaten(ausgewaehlte_kategorien, punkte)
+    speichere_spieldaten(ausgewaehlte_kategorien, punkte, anzahl_runden)
     st.success("Die Spieldaten wurden gespeichert! Gehe zur nächsten Seite, um die Ergebnisse zu sehen.")
 
     # Speichere die Daten in der persistenten Speicherung
