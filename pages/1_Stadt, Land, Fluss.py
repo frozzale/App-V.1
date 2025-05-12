@@ -122,7 +122,7 @@ if st.button("Spiel beenden"):
     # Erstelle das Dictionary 'result' mit den aktuellen Daten
     result = {
     "Kategorien": ", ".join(ausgewaehlte_kategorien),
-    "Punkte": ", ".join(str(p) for p in punkte),
+    "Punkte": punkte,
     "Total": sum(punkte),
     "Buchstabe": st.session_state.get("Buchstabe"),
     "Runden": anzahl_runden,
