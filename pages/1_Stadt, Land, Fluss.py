@@ -18,12 +18,14 @@ def speichere_spieldaten(kategorien, punkte, runden):
         kategorien (list): Die ausgewählten Kategorien.
         punkte (list): Die Punkte der aktuellen Runde.
         runden (int): Die Anzahl der gespielten Runden.
+        Buchstabe (str): Der generierte Buchstabe.
     """
+  
     if "spieldaten" not in st.session_state:
         st.session_state["spieldaten"] = []
 
     # Speichere die Daten als Dictionary
-    runden_daten = {"Kategorien": kategorien, "Punkte": punkte, "Runden": runden}
+    runden_daten = {"Kategorien": kategorien, "Punkte": punkte, "Runden": runden, "timestamp": pd.Timestamp.now()}
     st.session_state["spieldaten"].append(runden_daten)
 
 # Liste der Kategorien mit Übertiteln
@@ -47,8 +49,6 @@ kategorien = {
 if "ausgewaehlte_kategorien" not in st.session_state:
     st.session_state["ausgewaehlte_kategorien"] = []
 
-if "buchstabe" not in st.session_state:
-    st.session_state["buchstabe"] = None
 
 # Streamlit App
 st.header("Stadt, Land, Fluss - Kategorienauswahl")
@@ -124,13 +124,22 @@ if st.button("Spiel beenden"):
     "Kategorien": ", ".join(ausgewaehlte_kategorien),
     "Punkte": ", ".join(str(p) for p in punkte),
     "Total": sum(punkte),
+    "Buchstabe": st.session_state.get("Buchstabe"),
+    "Runden": anzahl_runden,
     "timestamp": pd.Timestamp.now()
 }
-    
     # Speichere die Spieldaten im Session State
-    speichere_spieldaten(ausgewaehlte_kategorien, punkte, anzahl_runden)
-    st.success("Die Spieldaten wurden gespeichert! Gehe zur nächsten Seite, um die Ergebnisse zu sehen.")
+    if "spieldaten" not in st.session_state:
+        st.session_state["spieldaten"] = []
+    st.session_state["spieldaten"].append(result)
 
+    # Speichere die Daten persistent mit DataManager
     from utils.data_manager import DataManager
-    DataManager().append_record(session_state_key='data_df', record_dict=result)  # update data in session state and storage
+    DataManager().append_record(session_state_key="data_df", record_dict=result)
+
+    st.success("Die Spieldaten wurden gespeichert! Gehe zur nächsten Seite, um die Ergebnisse zu sehen.")
+    
+
+    
+
 
