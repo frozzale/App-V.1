@@ -22,13 +22,19 @@ if "spieldaten" in st.session_state and st.session_state["spieldaten"]:
     if daten:
         df = pd.DataFrame(daten)
 
-        # Punkte pro Kategorie (Balkendiagramm)
-        st.subheader("Punkte pro Kategorie")
+        # Prozentuale Verteilung der Kategorien (Kuchendiagramm)
+        st.subheader("Prozentuale Verteilung der gespielten Kategorien")
         fig, ax = plt.subplots()
-        df.groupby("Kategorie")["Punkte"].sum().plot(kind="bar", ax=ax, color="skyblue", edgecolor="black")
-        ax.set_title("Punkte pro Kategorie")
-        ax.set_xlabel("Kategorie")
-        ax.set_ylabel("Punkte")
+        df["Kategorie"].value_counts(normalize=True).plot(
+            kind="pie",
+            ax=ax,
+            autopct='%1.1f%%',
+            startangle=90,
+            cmap="Pastel1",
+            legend=False
+        )
+        ax.set_ylabel("")
+        ax.set_title("Verteilung der Kategorien")
         st.pyplot(fig)
 
         # Punkte pro Spiel (Liniendiagramm)
