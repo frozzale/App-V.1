@@ -49,6 +49,9 @@ kategorien = {
 if "ausgewaehlte_kategorien" not in st.session_state:
     st.session_state["ausgewaehlte_kategorien"] = []
 
+# Initialisiere den Session State für den Buchstaben
+if "buchstabe" not in st.session_state:
+    st.session_state["buchstabe"] = ""
 
 # Streamlit App
 st.header("Stadt, Land, Fluss - Kategorienauswahl")
@@ -124,7 +127,6 @@ if st.button("Spiel beenden"):
     "Kategorien": ", ".join(ausgewaehlte_kategorien),
     "Punkte": punkte,
     "Total": sum(punkte),
-    "Buchstabe": st.session_state.get("Buchstabe"),
     "Runden": anzahl_runden,
     "timestamp": pd.Timestamp.now()
 }
@@ -133,11 +135,11 @@ if st.button("Spiel beenden"):
         st.session_state["spieldaten"] = []
     st.session_state["spieldaten"].append(result)
 
-    # Speichere die Daten persistent mit DataManager
+# Speichere die Daten persistent mit DataManager
     from utils.data_manager import DataManager
     DataManager().append_record(session_state_key="data_df", record_dict=result)
 
-    st.success("Die Spieldaten wurden gespeichert! Gehe zur nächsten Seite, um die Ergebnisse zu sehen.")
+st.success("Die Spieldaten wurden gespeichert! Gehe zur nächsten Seite, um die Ergebnisse zu sehen.")
     
 
     

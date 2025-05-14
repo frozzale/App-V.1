@@ -36,3 +36,8 @@ if "spieldaten" in st.session_state and st.session_state["spieldaten"]:
 else:
     st.info("Es wurden noch keine Spieldaten gespeichert.")
 
+st.markdown(f"**Durchschnittliche Punkte:** {df['Gesamtpunkte'].mean():.2f}")
+st.markdown(f"**Höchste Punktzahl:** {df['Gesamtpunkte'].max()}")
+
+csv = df.to_csv(index=False).encode("utf-8")
+st.download_button("Ergebnisse als CSV herunterladen", data=csv, file_name="spieldaten.csv", mime="text/csv")
