@@ -10,23 +10,23 @@ import random
 import string
 import pandas as pd
 
-def speichere_spieldaten(kategorien, punkte, runden):
-    """
-    Speichert die Spieldaten in den Session State.
+#def speichere_spieldaten(kategorien, punkte, runden):
+    #"""
+    #Speichert die Spieldaten in den Session State.
 
-    Args:
-        kategorien (list): Die ausgewählten Kategorien.
-        punkte (list): Die Punkte der aktuellen Runde.
-        runden (int): Die Anzahl der gespielten Runden.
-        Buchstabe (str): Der generierte Buchstabe.
-    """
+    #Args:
+        #kategorien (list): Die ausgewählten Kategorien.
+        #punkte (list): Die Punkte der aktuellen Runde.
+        #runden (int): Die Anzahl der gespielten Runden.
+        #Buchstabe (str): Der generierte Buchstabe.
+    #"""
   
-    if "spieldaten" not in st.session_state:
-        st.session_state["spieldaten"] = []
+    #if "spieldaten" not in st.session_state:
+        #st.session_state["spieldaten"] = []
 
     # Speichere die Daten als Dictionary
-    runden_daten = {"Kategorien": kategorien, "Punkte": punkte, "Runden": runden, "timestamp": pd.Timestamp.now()}
-    st.session_state["spieldaten"].append(runden_daten)
+    #runden_daten = {"Kategorien": kategorien, "Punkte": punkte, "Runden": runden, "timestamp": pd.Timestamp.now()}
+    #st.session_state["spieldaten"].append(runden_daten)
 
 # Liste der Kategorien mit Übertiteln
 kategorien = {
@@ -66,7 +66,7 @@ ausgewaehlte_kategorien = st.multiselect(
 )
 
 # Speichere die manuell ausgewählten Kategorien im Session State
-st.session_state["ausgewaehlte_kategorien"] = ausgewaehlte_kategorien
+#st.session_state["ausgewaehlte_kategorien"] = ausgewaehlte_kategorien
 
 st.subheader("oder")
 
@@ -131,9 +131,9 @@ if st.button("Spiel beenden"):
     "timestamp": pd.Timestamp.now()
 }
     # Speichere die Spieldaten im Session State
-    if "spieldaten" not in st.session_state:
-        st.session_state["spieldaten"] = []
-    st.session_state["spieldaten"].append(result)
+    #if "spieldaten" not in st.session_state:
+        #st.session_state["spieldaten"] = []
+    #st.session_state["spieldaten"].append(result)
 
 # Speichere die Daten persistent mit DataManager
     from utils.data_manager import DataManager

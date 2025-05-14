@@ -9,6 +9,8 @@ from utils import helpers
 import pandas as pd
 import matplotlib.pyplot as plt
 
+
+data_df = st.session_state['data_df'] 
 # Überprüfen, ob Spieldaten vorhanden sind
 if "spieldaten" in st.session_state and st.session_state["spieldaten"]:
     spieldaten = st.session_state["spieldaten"]
@@ -36,8 +38,10 @@ if "spieldaten" in st.session_state and st.session_state["spieldaten"]:
 else:
     st.info("Es wurden noch keine Spieldaten gespeichert.")
 
-st.markdown(f"**Durchschnittliche Punkte:** {df['Gesamtpunkte'].mean():.2f}")
-st.markdown(f"**Höchste Punktzahl:** {df['Gesamtpunkte'].max()}")
+#df = pd.read_csv("data.csv")  # Hier wird die CSV-Datei geladen
+#df = st.session_state.get("df")
+#st.markdown(f"**Durchschnittliche Punkte:** {df['Gesamtpunkte'].mean():.2f}")
+#st.markdown(f"**Höchste Punktzahl:** {df['Gesamtpunkte'].max()}")
 
-csv = df.to_csv(index=False).encode("utf-8")
-st.download_button("Ergebnisse als CSV herunterladen", data=csv, file_name="spieldaten.csv", mime="text/csv")
+#csv = df.to_csv(index=False).encode("utf-8")
+#st.download_button("Ergebnisse als CSV herunterladen", data=csv, file_name="spieldaten.csv", mime="text/csv")
