@@ -124,11 +124,12 @@ st.write(f"**Total der Punkte:** {total}")
 if st.button("Spiel beenden"):
     # Erstelle das Dictionary 'result' mit den aktuellen Daten
     result_dict = {
+    "timestamp": helpers.ch_now(),
     "Kategorien": ", ".join(ausgewaehlte_kategorien),
     "Punkte": punkte,
     "Total": sum(punkte),
-    "Runden": anzahl_runden,
-    "timestamp": pd.Timestamp.now()
+    "Runden": anzahl_runden    
+    #"timestamp": pd.Timestamp.now()
 }
     # Speichere die Spieldaten im Session State
     #if "spieldaten" not in st.session_state:
