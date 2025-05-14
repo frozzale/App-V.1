@@ -118,7 +118,7 @@ for runde in range(1, anzahl_runden + 1):
 
 # Berechne das Total der Punkte
 total = sum(punkte)
-st.write(f"**Total der Punkte:** {total}")
+st.write(f"**Total der Punkte im Spiel:** {total}")
 
 # Button zum Beenden der Runde
 if st.button("Spiel beenden"):
