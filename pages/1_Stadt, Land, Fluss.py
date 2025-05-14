@@ -128,7 +128,8 @@ if st.button("Spiel beenden"):
     "Kategorien": ", ".join(ausgewaehlte_kategorien),
     "Punkte": punkte,
     "Total": sum(punkte),
-    "Runden": anzahl_runden    
+    "Runden": anzahl_runden,
+    "Buchstabe": st.session_state["buchstabe"]
     #"timestamp": pd.Timestamp.now()
 }
     # Speichere die Spieldaten im Session State
