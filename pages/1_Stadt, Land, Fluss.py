@@ -65,6 +65,10 @@ ausgewaehlte_kategorien = st.multiselect(
     max_selections=6
 )
 
+# Button zum Übernehmen der Auswahl
+if st.button("Kategorien übernehmen"):
+    st.session_state["ausgewaehlte_kategorien"] = ausgewaehlte_kategorien
+
 # Speichere die manuell ausgewählten Kategorien im Session State
 #st.session_state["ausgewaehlte_kategorien"] = ausgewaehlte_kategorien
 
@@ -120,6 +124,7 @@ for runde in range(1, anzahl_runden + 1):
 total = sum(punkte)
 st.write(f"**Total der Punkte im Spiel:** {total}")
 
+st.info("Speichere zuerst deine Daten mit 'Spiel beenden', bevor du die Ergebnisse ansiehst.")
 # Button zum Beenden der Runde
 if st.button("Spiel beenden"):
     # Erstelle das Dictionary 'result' mit den aktuellen Daten
@@ -143,7 +148,8 @@ if st.button("Spiel beenden"):
 
     st.success("Die Spieldaten wurden gespeichert! Gehe zur nächsten Seite, um die Ergebnisse zu sehen.")
     
-
+if st.button("Ergebnisse anzeigen"):
+    st.switch_page("pages/2_Ergebnisse.py")
     
 
 
