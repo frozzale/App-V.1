@@ -12,5 +12,5 @@ kategorien = {
     "Prominenz": ["Schauspieler", "Saenger", "Fussballspieler", "Politiker", "Historische Persoenlichkeit", "Film-/Serie-/Buch-Charakter"],
     "Lustig & ungewoehnlich": ["Scheidungsgrund / Kuendigungsgrund", "Jugendwort", "Gegenstaende, die die Welt nicht braucht", "Kosenahme", "Superkraft", "Dinge im Haushalt", "Haustiernamen"],
     "Themen zum Kennenlernen": ["Wuerde ich nie essen", "Reiseziel", "Wuerde ich kaufen, wenn ich reich waere", "Hab ich noch nie gemacht", "Mag ich gerne"],
-    "Babyparty": ["Babynamen", "Koennte das erste Wort werden", "Geschmacksrichtung für Babybrei", "Haette ich gerne als Kind gehabt"]
+    "Babyparty": ["Babynamen", "Koennte das erste Wort werden", "Geschmacksrichtung fuer Babybrei", "Haette ich gerne als Kind gehabt"]
 } 
