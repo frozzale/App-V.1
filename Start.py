@@ -33,13 +33,13 @@ if "page" not in st.session_state:
 st.title('Stadt, Land, Fluss')
 name = st.session_state.get('name', 'Gast')
 st.markdown(f"✨ Hallo {name}! ✨")
-st.write("In der ersten Version dieser App kannst du den Buchstaben für's Spiel generieren und deine Punkte pro Runde eintragen. Die Punkte werden dann automatisch zusammengezählt.")
+st.write("In dieser Version der App hast du verschiedene Möglichkeiten, Stadt, Land, Fluss zu spielen.")
 st.info("""Diese App ist noch in der Entwicklung und deshalb nicht abschliessend.""")
 st.markdown("""
         Informationen zum Spiel: 
-        - Das Spiel wird auf Papier gespielt.
-        - Es gibt 5 Kategorien: Stadt, Land, Fluss, Tier und Marke.
-        - Der Buchstabe wird zufällig generiert.
+        - Das Spiel wird entweder auf Papier oder direkt in der App gespielt.
+        - Es gibt viele verschiedene Kategorien. Entweder wählt ihr sie selbst aus, oder ihr lasst sie durch einen Button zufällig generieren. 
+        - Der Buchstabe wird ebenfalls durch einen Button zufällig generiert.
         - Der Spieler, der am schnellsten alles ausgefüllt hat, ruft "Stopp!".
         - Versuche so schnell wie möglich zu sein und einzigartige Worte zu finden.
         - Die Punkteverteilung ist wie folgt:
@@ -47,6 +47,8 @@ st.markdown("""
             - 1 Punkt für ein Wort, das auch andere Spieler:innen haben
             - 0 Punkte für kein Wort oder ein falsches Wort
     """)
+
+
 
 if st.button("Zum Spiel"):
     st.switch_page("pages/1_Stadt, Land, Fluss.py")
