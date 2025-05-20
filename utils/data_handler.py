@@ -42,13 +42,13 @@ class DataHandler:
         full_path = self._resolve_path(relative_path)
         return self.filesystem.exists(full_path)
 
-    def read_text(self, relative_path, encoding="latin1"):
+    def read_text(self, relative_path, encoding="utf-8"):
         """
         Read the contents of a text file.
 
         Args:
             relative_path: The path relative to the root directory.
-            encoding: The encoding to use for reading the file (default: "latin1").
+            encoding: The encoding to use for reading the file (default: "utf-8").
 
         Returns:
             The content of the file as a string.
@@ -117,7 +117,7 @@ class DataHandler:
         elif ext in [".yaml", ".yml"]:
             return yaml.safe_load(self.read_text(relative_path))
         elif ext == ".csv":
-            encoding = load_args.pop("encoding", "latin1")
+            encoding = load_args.pop("encoding", "utf-8")
             return pd.read_csv(StringIO(self.read_text(relative_path, encoding=encoding)), **load_args)
         elif ext == ".txt":
             return self.read_text(relative_path)
