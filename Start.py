@@ -1,3 +1,16 @@
+import streamlit as st
+
+st.set_page_config(initial_sidebar_state="collapsed")
+
+st.markdown(
+    """
+    <style>
+        [data-testid="stSidebar"] {display: none !important;}
+        [data-testid="collapsedControl"] {display: none !important;}
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 # ====== Start Init Block ======
 # This needs to copied on top of the entry point of the app (Start.py)
 
@@ -20,7 +33,6 @@ data_manager.load_user_data(
     parse_dates = ['timestamp']
     )
 # ====== End Init Block ======
-
 # ------------------------------------------------------------
 # Here starts the actual app, which was developed previously
 import streamlit as st
@@ -49,9 +61,8 @@ st.markdown("""
     """)
 
 
-
-if st.button("Zum Spiel"):
-    st.switch_page("pages/1_Stadt, Land, Fluss.py")
+if st.button("Zu den verschiedenen Spielmodi"):
+    st.switch_page("pages/1_Verschiedene Modi.py")
 
 
 st.write("Diese App wurde von Alessia Frozzi (frozzale@students.zhaw.ch), Alicia Cardoso (cardoali@students.zhaw.ch) und Elena Müller (muellel3@students.zhaw.ch) entwickelt.")

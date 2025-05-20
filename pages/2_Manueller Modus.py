@@ -40,7 +40,7 @@ if "buchstabe" not in st.session_state:
     st.session_state["buchstabe"] = ""
 
 # Streamlit App
-st.header("Stadt, Land, Fluss - Kategorienauswahl")
+st.header("Stadt, Land, Fluss - Manueller Modus")
 
 # Auswahl der Kategorien
 st.subheader("Wähle 6 Kategorien aus:")
