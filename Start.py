@@ -31,7 +31,7 @@ data_manager.load_user_data(
     file_name='data.csv', 
     initial_value = pd.DataFrame(), 
     parse_dates = ['timestamp'],
-    encoding="latin1"    
+    encoding="utf-8"    
     )
 # ====== End Init Block ======
 # ------------------------------------------------------------
