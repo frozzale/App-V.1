@@ -14,7 +14,35 @@ if data_df.empty:
     st.info('Keine Daten vorhanden. Bitte zuerst ein Spiel spielen.') 
     st.stop()
 
-st.scatter_chart(data_df, x='timestamp', y='Total', use_container_width=True)
+st.line_chart(data_df, x='timestamp', y='Total', use_container_width=True)
+
+# --- Grafik: Häufigkeit der gespielten Kategorien ---
+st.subheader("Häufigkeit der gespielten Kategorien")
+
+# Alle Kategorien aus allen Spielen extrahieren und zählen
+from collections import Counter
+
+# Die Spalte "Kategorien" enthält Strings wie "Geografie: Stadt, Tiere: Säugetier, ..."
+# Wir splitten sie und zählen die einzelnen Kategorien
+alle_kategorien = []
+for eintrag in data_df["Kategorien"].dropna():
+    # Splitte an Kommas und entferne Leerzeichen
+    kategorien_liste = [k.strip() for k in eintrag.split(",")]
+    alle_kategorien.extend(kategorien_liste)
+
+# Zähle die Häufigkeit jeder Kategorie
+kategorie_counter = Counter(alle_kategorien)
+if kategorie_counter:
+    kategorie_df = pd.DataFrame.from_dict(kategorie_counter, orient='index', columns=['Anzahl'])
+    kategorie_df = kategorie_df.sort_values('Anzahl', ascending=False)
+
+    st.bar_chart(kategorie_df)
+else:
+    st.info("Es wurden noch keine Kategorien gespielt.")
+
+if "Buchstabe" in data_df.columns:
+    st.subheader("Häufigkeit der gezogenen Buchstaben")
+    st.bar_chart(data_df["Buchstabe"].value_counts().sort_index())
 
 # Überprüfen, ob Spieldaten vorhanden sind
 #if "spieldaten" in st.session_state and st.session_state["spieldaten"]:
@@ -43,10 +71,4 @@ st.scatter_chart(data_df, x='timestamp', y='Total', use_container_width=True)
 #else:
     #st.info("Es wurden noch keine Spieldaten gespeichert.")
 
-#df = pd.read_csv("data.csv")  # Hier wird die CSV-Datei geladen
-#df = st.session_state.get("df")
-#st.markdown(f"**Durchschnittliche Punkte:** {df['Gesamtpunkte'].mean():.2f}")
-#st.markdown(f"**Höchste Punktzahl:** {df['Gesamtpunkte'].max()}")
 
-#csv = df.to_csv(index=False).encode("utf-8")
-#st.download_button("Ergebnisse als CSV herunterladen", data=csv, file_name="spieldaten.csv", mime="text/csv")
