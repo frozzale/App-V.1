@@ -10,8 +10,8 @@ anzahl_spalten = st.number_input("Anzahl Spalten. Nehme so viele Spalten, wie Ka
 
 st.subheader("**Raster:**")
 
-# Erste Zeile: Überschriften
-header_cols = st.columns(anzahl_spalten)
+# Kopfzeile
+header_cols = st.columns(anzahl_spalten + 1)
 for j in range(anzahl_spalten):
     with header_cols[j]:
         st.markdown(f"**Kategorie {j+1}**")
@@ -21,12 +21,18 @@ for j in range(anzahl_spalten):
     with cols[j]:
         #st.text_area(f"Kategorie {j+1}", key=f"zeile_{j}")
         st.text_area(f"", key=f"zeile_{j}")
+with header_cols[-1]:
+    st.markdown("**Total**")
 
-
-# Restliche Zeilen: Eingabefelder
+# Raster mit Wort- und Punkteingabe
 for i in range(anzahl_zeilen):
-    cols = st.columns(anzahl_spalten)
+    cols = st.columns(anzahl_spalten + 1)
+    zeilen_total = 0
     for j in range(anzahl_spalten):
         with cols[j]:
-            st.text_area(f"Eingabe {i+1},{j+1}", key=f"raster_{i}_{j}")
+            wort = st.text_input(f"Wort {i+1},{j+1}", key=f"wort_{i}_{j}")
+            punkte = st.number_input(f"Punkte {i+1},{j+1}", min_value=0, max_value=100, step=1, key=f"punkte_{i}_{j}")
+            zeilen_total += punkte
+    with cols[-1]:
+        st.markdown(f"**{zeilen_total}**")
 
