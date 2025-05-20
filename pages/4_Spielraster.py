@@ -36,3 +36,10 @@ for i in range(anzahl_zeilen):
     with cols[-1]:
         st.markdown(f"**{zeilen_total}**")
 
+# Gesamttotal aller Punkte berechnen und anzeigen
+gesamt_total = 0
+for i in range(anzahl_zeilen):
+    for j in range(anzahl_spalten):
+        gesamt_total += st.session_state.get(f"punkte_{i}_{j}", 0)
+
+st.markdown(f"### Deine aktuelle totale Punktzahl lautet: **{gesamt_total}**")
