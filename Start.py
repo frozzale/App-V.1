@@ -30,7 +30,8 @@ data_manager.load_user_data(
     session_state_key='data_df', 
     file_name='data.csv', 
     initial_value = pd.DataFrame(), 
-    parse_dates = ['timestamp']
+    parse_dates = ['timestamp'],
+    encoding="utf-8"
     )
 # ====== End Init Block ======
 # ------------------------------------------------------------
