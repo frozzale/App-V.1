@@ -1,6 +1,11 @@
+# ====== Start Login Block ======
+from utils.login_manager import LoginManager
+LoginManager().go_to_login('Start.py') 
+# ====== End Login Block ======
+
 import streamlit as st
 
-st.title("Flexibles Spielraster")
+st.title("Flexibles Spielraster: Spieler")
 st.subheader("Erstelle dein eigenes Raster für Stadt, Land, Fluss")
 st.write("Starte damit, die gewählten Kategorien in die Zeilen des Rasters einzutragen.")
 
