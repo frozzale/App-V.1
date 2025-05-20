@@ -117,7 +117,8 @@ class DataHandler:
         elif ext in [".yaml", ".yml"]:
             return yaml.safe_load(self.read_text(relative_path))
         elif ext == ".csv":
-            return pd.read_csv(StringIO(self.read_text(relative_path)), **load_args)       
+            encoding = load_args.pop("encoding", "latin1")
+            return pd.read_csv(StringIO(self.read_text(relative_path, encoding=encoding)), **load_args)
         elif ext == ".txt":
             return self.read_text(relative_path)
         else:
