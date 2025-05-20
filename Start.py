@@ -48,5 +48,8 @@ st.markdown("""
             - 0 Punkte für kein Wort oder ein falsches Wort
     """)
 
+if st.button("Zum Spiel"):
+    st.switch_page("pages/1_Stadt, Land, Fluss.py")
+
 
 st.write("Diese App wurde von Alessia Frozzi (frozzale@students.zhaw.ch), Alicia Cardoso (cardoali@students.zhaw.ch) und Elena Müller (muellel3@students.zhaw.ch) entwickelt.")
