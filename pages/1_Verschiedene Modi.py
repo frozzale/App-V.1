@@ -11,7 +11,14 @@ st.subheader("Hier kannst du dir einen Überblick über die verschiedenen Modi v
 
 st.write("Folgende Modi stehen dir zur Verfügung:")
 st.badge("Manueller Modus", color="primary")
-st.write("In diesem Modus spielst du das Spiel mit Stift und Papier. Es werden insgesamt 6 Kategorien ausgewählt und ein Buchstabe generiert. Die Punkte pro Runde kannst du dann manuell eingeben und es wird dir am Ende des Spiels das Total angezeigt.")
+st.write("Wichtige Punkte zu diesem Modus:")
+st.markdown("""
+            - In diesem Modus spielst du das Spiel mit Stift und Papier. Also ganz klassisch.
+            - Zeichne dir auf ein Blatt Papier ein Raster mit den gewählten Kategorien, die gewünschte Anzahl Runden und eine Spalte für die Punkte.
+            - Es werden insgesamt 6 Kategorien ausgewählt und ein Buchstabe generiert. 
+            - 
+            - Die Punkte pro Runde kannst du dann manuell eingeben und es wird dir am Ende des Spiels das Total angezeigt.
+""")
 if st.button("Zum manuellen Modus"):
     st.switch_page("pages/2_Manueller Modus.py")
 
