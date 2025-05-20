@@ -123,10 +123,6 @@ if st.button("Spiel beenden"):
     "Buchstabe": st.session_state["buchstabe"]
     #"timestamp": pd.Timestamp.now()
 }
-    # Speichere die Spieldaten im Session State
-    #if "spieldaten" not in st.session_state:
-        #st.session_state["spieldaten"] = []
-    #st.session_state["spieldaten"].append(result)
 
 # Speichere die Daten persistent mit DataManager
     from utils.data_manager import DataManager
@@ -135,7 +131,7 @@ if st.button("Spiel beenden"):
     st.success("Die Spieldaten wurden gespeichert! Gehe zur nächsten Seite, um die Ergebnisse zu sehen.")
     
 if st.button("Ergebnisse anzeigen"):
-    st.switch_page("pages/2_Ergebnisse.py")
+    st.switch_page("pages/3_Ergebnisse.py")
     
 
 
