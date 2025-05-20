@@ -42,7 +42,7 @@ class DataHandler:
         full_path = self._resolve_path(relative_path)
         return self.filesystem.exists(full_path)
 
-    def read_text(self, relative_path):
+    def read_text(self, relative_path, encoding="utf-8"):
         """
         Read the contents of a text file.
 
@@ -53,7 +53,7 @@ class DataHandler:
             The content of the file as a string.
         """
         full_path = self._resolve_path(relative_path)
-        with self.filesystem.open(full_path, "r") as f:
+        with self.filesystem.open(full_path, "r", encoding=encoding) as f:
             return f.read()
 
 
@@ -117,7 +117,8 @@ class DataHandler:
         elif ext in [".yaml", ".yml"]:
             return yaml.safe_load(self.read_text(relative_path))
         elif ext == ".csv":
-            return pd.read_csv(StringIO(self.read_text(relative_path)), **load_args)       
+            encoding = load_args.pop("encoding", "utf-8")
+            return pd.read_csv(StringIO(self.read_text(relative_path, encoding=encoding)), **load_args)
         elif ext == ".txt":
             return self.read_text(relative_path)
         else:
