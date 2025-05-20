@@ -59,6 +59,7 @@ class DataManager:
             fs: Filesystem interface instance
             app_data_reg (dict): Registry for application-wide data
             user_data_reg (dict): Registry for user-specific data
+            username (str): Current user's username (None if no user is logged in)
         """
         if hasattr(self, 'fs'):  # check if instance is already initialized
             return
@@ -68,6 +69,33 @@ class DataManager:
         self.fs = self._init_filesystem(fs_protocol)
         self.app_data_reg = {}
         self.user_data_reg = {}
+        self.username = None
+
+    def info(self):
+        """
+        Returns a formatted string with information about the DataManager's internal state.
+        
+        Returns:
+            str: A string containing information about filesystem, root folder, and data registries
+        """
+        info_str = f"DataManager Information:\n"
+        info_str += f"  Filesystem Type: {type(self.fs).__name__}\n"
+        info_str += f"  Root Folder: {self.fs_root_folder}\n"
+        info_str += f"  App Data Registry: {len(self.app_data_reg)} entries\n"
+        
+        if self.app_data_reg:
+            info_str += "    Registered app data files:\n"
+            for key, value in self.app_data_reg.items():
+                info_str += f"      - {key}: {value}\n"
+        
+        info_str += f"  User Data Registry: {len(self.user_data_reg)} entries\n"
+        
+        if self.user_data_reg:
+            info_str += "    Registered user data files:\n"
+            for key, value in self.user_data_reg.items():
+                info_str += f"      - {key}: {value}\n"
+                
+        return info_str
 
     @staticmethod
     def _init_filesystem(protocol: str):
@@ -134,6 +162,15 @@ class DataManager:
         st.session_state[session_state_key] = data
         self.app_data_reg[session_state_key] = file_name
 
+    def del_all_user_data(self):
+        """
+        Delete all user-specific data from the session state and data registry.
+        """
+        for key in self.user_data_reg:
+            st.session_state.pop(key)
+        self.user_data_reg = {}
+        self.username = None
+
     def load_user_data(self, session_state_key, file_name, initial_value=None, **load_args):
         """
         Load user-specific data from a file in the user's data folder.
@@ -157,11 +194,12 @@ class DataManager:
         """
         username = st.session_state.get('username', None)
         if username is None:
-            for key in self.user_data_reg:  # delete all user data
-                st.session_state.pop(key)
-            self.user_data_reg = {}
+            self.del_all_user_data()
             st.error(f"DataManager: No user logged in, cannot load file `{file_name}` into session state with key `{session_state_key}`")
             return
+        elif username != self.username:
+            self.del_all_user_data()
+            self.username = username
         elif session_state_key in st.session_state:
             return
 
@@ -177,21 +215,27 @@ class DataManager:
         return {**self.app_data_reg, **self.user_data_reg}
 
     def save_data(self, session_state_key):
+        """
+        Saves data from session state to persistent storage using the registered data handler.
+
+        Args:
+            session_state_key (str): Key identifying the data in both session state and data registry
+
+        Raises:
+            ValueError: If the session_state_key is not registered in data_reg
+            ValueError: If the session_state_key is not found in session state
+
+        Example:
+            >>> data_manager.save_data("user_settings")
+        """
         if session_state_key not in self.data_reg:
             raise ValueError(f"DataManager: No data registered for session state key {session_state_key}")
         
         if session_state_key not in st.session_state:
             raise ValueError(f"DataManager: Key {session_state_key} not found in session state")
         
-        data = st.session_state[session_state_key]
-
-        # ✅ Nur DataFrame erlauben, da du .csv speicherst
-        if isinstance(data, pd.DataFrame):
-            dh = self._get_data_handler()
-            dh.save(self.data_reg[session_state_key], data)
-        else:
-            raise ValueError(f"DataManager: Can only save DataFrame for CSV, but got {type(data)}")
-
+        dh = self._get_data_handler()
+        dh.save(self.data_reg[session_state_key], st.session_state[session_state_key])
 
     def save_all_data(self):
         """
@@ -207,20 +251,34 @@ class DataManager:
             self.save_data(key)
 
 
-    def append_record(self, session_state_key: str, record_dict: dict):    
-        import pandas as pd
-        import streamlit as st
+    def append_record(self,session_state_key, record_dict):
+        """
+        Append a new record to a value stored in the session state. The value must be either a list or a DataFrame.
 
+        Args:
+            session_state_key (str): Key identifying the value in the session state
+            record_dict (dict): Dictionary containing the new record to append
+
+        Raises:
+            ValueError: If the session_state_key is not found in session state
+            ValueError: If the session state value is not a list or a DataFrame
+            ValueError: If the record_dict is not a dictionary
+
+        Returns:
+            None: The updated value is stored back in the session state
+
+        """
+        data_value = st.session_state[session_state_key]
+        
         if not isinstance(record_dict, dict):
-            raise ValueError("DataManager: The record_dict must be a dictionary")
-
-        # Wenn Key nicht existiert oder kein DataFrame → initialisieren
-        if session_state_key not in st.session_state or not isinstance(st.session_state[session_state_key], pd.DataFrame):
-            st.session_state[session_state_key] = pd.DataFrame()
-
-        df = st.session_state[session_state_key]
-        df = pd.concat([df, pd.DataFrame([record_dict])], ignore_index=True)
-        st.session_state[session_state_key] = df
-
+            raise ValueError(f"DataManager: The record_dict must be a dictionary")
+        
+        if isinstance(data_value, pd.DataFrame):
+            data_value = pd.concat([data_value, pd.DataFrame([record_dict])], ignore_index=True)
+        elif isinstance(data_value, list):
+            data_value.append(record_dict)
+        else:
+            raise ValueError(f"DataManager: The session state value for key {session_state_key} must be a DataFrame or a list")
+        
+        st.session_state[session_state_key] = data_value
         self.save_data(session_state_key)
-
