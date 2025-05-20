@@ -42,13 +42,13 @@ class DataHandler:
         full_path = self._resolve_path(relative_path)
         return self.filesystem.exists(full_path)
 
-    def read_text(self, relative_path, encoding="utf-8-sig"):
+    def read_text(self, relative_path, encoding="latin1"):
         """
         Read the contents of a text file.
 
         Args:
             relative_path: The path relative to the root directory.
-            encoding: The encoding to use for reading the file (default: "utf-8-sig").
+            encoding: The encoding to use for reading the file (default: "latin1").
 
         Returns:
             The content of the file as a string.
