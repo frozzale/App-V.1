@@ -44,6 +44,14 @@ if "Buchstabe" in data_df.columns:
     st.subheader("Häufigkeit der gezogenen Buchstaben")
     st.bar_chart(data_df["Buchstabe"].value_counts().sort_index())
 
+data_df = st.session_state['data_df']
+if data_df.empty:
+    st.info('Keine Daten vorhanden. Bitte zuerst ein Spiel spielen.') 
+    st.stop()
+
+st.subheader("Alle eingegebenen Wörter und Punkte")
+st.dataframe(data_df)
+
 if st.button("Home"):
     st.switch_page("Start.py")
 if st.button("Zurück zu den Spielmodi"):
