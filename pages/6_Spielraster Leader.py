@@ -109,5 +109,25 @@ for i in range(anzahl_zeilen):
 
 st.markdown(f"### Deine aktuelle totale Punktzahl lautet: **{gesamt_total}**")
 
+st.info("Speichere zuerst deine Daten mit 'Spiel beenden', bevor du die Ergebnisse ansiehst.")
+# Button zum Beenden der Runde
+if st.button("Spiel beenden"):
+    # Erstelle das Dictionary 'result' mit den aktuellen Daten
+    result_dict = {
+    "timestamp": helpers.ch_now(),
+    "Kategorien": ", ".join(ausgewaehlte_kategorien),
+    "Punkte": punkte,
+    "Total": gesamt_total,
+    "Runden": anzahl_zeilen,
+    "Buchstabe": st.session_state["buchstabe"]
+    #"timestamp": pd.Timestamp.now()
+}
+    # Speichere die Daten persistent mit DataManager
+    from utils.data_manager import DataManager
+    DataManager().append_record(session_state_key="data_df", record_dict=result_dict)
+
+    st.success("Die Spieldaten wurden gespeichert! Gehe zur nächsten Seite, um die Ergebnisse zu sehen.")
+if st.button("Ergebnisse anzeigen"):
+    st.switch_page("pages/3_Ergebnisse.py")
 if st.button("Home"):
     st.switch_page("Start.py")

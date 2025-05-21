@@ -4,6 +4,10 @@ LoginManager().go_to_login('Start.py')
 # ====== End Login Block ======
 
 import streamlit as st
+import streamlit as st
+from utils.data_manager import DataManager
+from utils import helpers
+import pandas as pd
 
 st.title("Flexibles Spielraster: Spieler")
 st.subheader("Erstelle dein eigenes Raster für Stadt, Land, Fluss")
@@ -48,6 +52,24 @@ for i in range(anzahl_zeilen):
         gesamt_total += st.session_state.get(f"punkte_{i}_{j}", 0)
 
 st.markdown(f"### Deine aktuelle totale Punktzahl lautet: **{gesamt_total}**")
+
+st.info("Speichere zuerst deine Daten mit 'Spiel beenden', bevor du die Ergebnisse ansiehst.")
+# Button zum Beenden der Runde
+if st.button("Spiel beenden"):
+    # Erstelle das Dictionary 'result' mit den aktuellen Daten
+    result_dict = {
+    "timestamp": helpers.ch_now(),
+    "Punkte": punkte,
+    "Total": gesamt_total,
+    "Runden": anzahl_zeilen,
+    "Buchstabe": st.session_state["buchstabe"]
+    #"timestamp": pd.Timestamp.now()
+}
+    # Speichere die Daten persistent mit DataManager
+    from utils.data_manager import DataManager
+    DataManager().append_record(session_state_key="data_df", record_dict=result_dict)
+
+    st.success("Die Spieldaten wurden gespeichert! Gehe zur nächsten Seite, um die Ergebnisse zu sehen.")
 
 if st.button("Home"):
     st.switch_page("Start.py")

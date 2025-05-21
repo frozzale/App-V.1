@@ -46,6 +46,8 @@ if "Buchstabe" in data_df.columns:
 
 if st.button("Home"):
     st.switch_page("Start.py")
+if st.button("Zurück zu den Spielmodi"):
+    st.switch_page("pages/1_Verschiedene Modi.py")
 # Überprüfen, ob Spieldaten vorhanden sind
 #if "spieldaten" in st.session_state and st.session_state["spieldaten"]:
     #spieldaten = st.session_state["spieldaten"]
