@@ -48,3 +48,6 @@ for i in range(anzahl_zeilen):
         gesamt_total += st.session_state.get(f"punkte_{i}_{j}", 0)
 
 st.markdown(f"### Deine aktuelle totale Punktzahl lautet: **{gesamt_total}**")
+
+if st.button("Home"):
+    st.switch_page("Start.py")

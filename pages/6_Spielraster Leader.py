@@ -65,7 +65,7 @@ if st.session_state["buchstabe"]:
 else:
     st.info("Drücke auf den Button, um einen Buchstaben zu generieren.")
 
-st.title("Flexibles Spielraster")
+st.title("Flexibles Spielraster: Leader")
 st.subheader("Erstelle dein eigenes Raster für Stadt, Land, Fluss")
 st.write("Starte damit, die gewählten Kategorien in die Zeilen des Rasters einzutragen.")
 
@@ -108,3 +108,6 @@ for i in range(anzahl_zeilen):
         gesamt_total += st.session_state.get(f"punkte_{i}_{j}", 0)
 
 st.markdown(f"### Deine aktuelle totale Punktzahl lautet: **{gesamt_total}**")
+
+if st.button("Home"):
+    st.switch_page("Start.py")

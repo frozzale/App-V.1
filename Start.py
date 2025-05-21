@@ -49,7 +49,7 @@ st.write("In dieser Version der App hast du verschiedene Möglichkeiten, Stadt, 
 st.info("""Diese App ist noch in der Entwicklung und deshalb nicht abschliessend.""")
 st.markdown("""
         Informationen zum Spiel: 
-        - Das Spiel wird entweder auf Papier oder direkt in der App gespielt.
+        - Das Spiel wird entweder auf Papier oder direkt in der App gespielt, je nach dem für welchen Modus du dich entscheidest.
         - Es gibt viele verschiedene Kategorien. Entweder wählt ihr sie selbst aus, oder ihr lasst sie durch einen Button zufällig generieren. 
         - Der Buchstabe wird ebenfalls durch einen Button zufällig generiert.
         - Der Spieler, der am schnellsten alles ausgefüllt hat, ruft "Stopp!".
@@ -63,6 +63,8 @@ st.markdown("""
 
 if st.button("Zu den verschiedenen Spielmodi"):
     st.switch_page("pages/1_Verschiedene Modi.py")
-
+#st.divider()
+if st.button("Zu meinen Grafiken"):
+    st.switch_page("pages/3_Ergebnisse.py")
 
 st.write("Diese App wurde von Alessia Frozzi (frozzale@students.zhaw.ch), Alicia Cardoso (cardoali@students.zhaw.ch) und Elena Müller (muellel3@students.zhaw.ch) entwickelt.")

@@ -26,7 +26,7 @@ st.badge("Leader und Spieler Modus", color="blue")
 st.write("Wichtige Punkte zu diesem Modus:")
 st.markdown("""
             - In diesem Modus kannst du das Spiel entweder als Spieler oder als Leader spielen.
-            - Der Leader hat alle wichtigen Funktionen, um das Spiel zu starten und leiten.
+            - Der Leader hat alle wichtigen Funktionen, um das Spiel zu starten und leiten. Es braucht daher nur einen Leader.
                  - Die Funktionen sind:
                     - Kategorien auswählen
                     - Buchstaben generieren
