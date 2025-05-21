@@ -87,6 +87,7 @@ if st.button("Spiel beenden"):
     #DataManager().append_record(session_state_key="data_df", record_dict=result_dict)
 
     #st.success("Die Spieldaten wurden gespeichert! Gehe zur nächsten Seite, um die Ergebnisse zu sehen.")
-
+if st.button("Ergebnisse anzeigen"):
+    st.switch_page("pages/3_Ergebnisse.py")
 if st.button("Home"):
     st.switch_page("Start.py")
