@@ -17,28 +17,36 @@ LoginManager().go_to_login('Start.py')
 # ====== End Login Block ======
 
 import streamlit as st
-#from utils.data_manager import DataManager
-#from utils import helpers
 import pandas as pd
 import matplotlib.pyplot as plt
 from collections import Counter
+import altair as alt
 
 data_df = st.session_state['data_df']
 if data_df.empty:
     st.info('Keine Daten vorhanden. Bitte zuerst ein Spiel spielen.') 
     st.stop()
 
-# --- Liniengrafik: Totalpunkte pro Spiel (alle Modi) ---
-st.subheader("Verlauf der Totalpunkte (alle Modi)")
+# --- Liniengrafik: Totalpunkte pro Spiel, gruppiert nach Modus ---
+st.subheader("Verlauf der Totalpunkte pro Modus")
 
-if "Total" in data_df.columns:
+if "Total" in data_df.columns and "Modus" in data_df.columns:
     df_plot = data_df.copy()
     if "timestamp" in df_plot.columns:
         df_plot = df_plot.sort_values("timestamp")
-    # Die X-Achse ist die Spielnummer, die Y-Achse die Gesamtpunkte
-    st.line_chart(df_plot["Total"].reset_index(drop=True))
+    df_plot = df_plot.reset_index(drop=True)
+    df_plot["Spielnummer"] = df_plot.index + 1  # Für X-Achse
+
+    chart = alt.Chart(df_plot).mark_line(point=True).encode(
+        x=alt.X("Spielnummer", title="Spielnummer"),
+        y=alt.Y("Total", title="Gesamtpunkte"),
+        color=alt.Color("Modus", title="Modus"),
+        tooltip=["Modus", "Total", "Spielnummer"]
+    ).properties(width=600, height=350)
+
+    st.altair_chart(chart, use_container_width=True)
 else:
-    st.info("Keine Totalpunkte vorhanden.")
+    st.info("Keine Totalpunkte oder Modus-Informationen vorhanden.")
 
 if "Modus" not in data_df.columns:
     data_df["Modus"] = ""
