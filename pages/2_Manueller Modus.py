@@ -132,6 +132,8 @@ if st.button("Spiel beenden"):
     
 if st.button("Ergebnisse anzeigen"):
     st.switch_page("pages/3_Ergebnisse.py")
-    
+
+if st.button("Modus wechseln"):
+    st.switch_page("pages/1_Verschiedene Modi.py")
 
 
