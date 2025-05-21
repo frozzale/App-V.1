@@ -32,28 +32,40 @@ if "ausgewaehlte_kategorien" not in st.session_state:
 if "buchstabe" not in st.session_state:
     st.session_state["buchstabe"] = ""
 
+# Anzahl der gewünschten Kategorien wählen
+anzahl_kategorien = st.number_input(
+    "Wie viele Kategorien möchtest du auswählen?", 
+    min_value=1, 
+    max_value=10, 
+    value=6, 
+    step=1, 
+    key="anzahl_kategorien"
+)
+
 # Auswahl der Kategorien
-st.subheader("Wähle 6 Kategorien aus:")
+st.subheader("Wähle deine Kategorien aus:")
+# Stelle sicher, dass nicht mehr als erlaubt vorausgewählt sind!
+default_kategorien = st.session_state.get("ausgewaehlte_kategorien", [])[:anzahl_kategorien]
+
 ausgewaehlte_kategorien = st.multiselect(
     "Kategorien auswählen:",
     options=[f"{uebertitel}: {kategorie}" for uebertitel, kategorien_liste in kategorien.items() for kategorie in kategorien_liste],
-    default=st.session_state["ausgewaehlte_kategorien"],  # Lade die gespeicherten Kategorien
-    max_selections=6
+    default=default_kategorien,
+    max_selections=anzahl_kategorien
 )
 
 # Button zum Übernehmen der Auswahl
 if st.button("Kategorien übernehmen"):
     st.session_state["ausgewaehlte_kategorien"] = ausgewaehlte_kategorien
 
-# Speichere die manuell ausgewählten Kategorien im Session State
-#st.session_state["ausgewaehlte_kategorien"] = ausgewaehlte_kategorien
+
 
 st.subheader("oder")
 
-# Zufällige Auswahl von 6 Kategorien
+# Zufällige Auswahl von Kategorien
 if st.button("Zufällige Kategorien generieren"):
     alle_kategorien = [f"{uebertitel}: {kategorie}" for uebertitel, kategorien_liste in kategorien.items() for kategorie in kategorien_liste]
-    st.session_state["ausgewaehlte_kategorien"] = random.sample(alle_kategorien, 6)
+    st.session_state["ausgewaehlte_kategorien"] = random.sample(alle_kategorien, anzahl_kategorien)
 
 # Anzeige der ausgewählten Kategorien
 if st.session_state["ausgewaehlte_kategorien"]:
@@ -61,7 +73,7 @@ if st.session_state["ausgewaehlte_kategorien"]:
     for kategorie in st.session_state["ausgewaehlte_kategorien"]:
         st.write(f"- {kategorie}")
 else:
-    st.info("Bitte wähle bis zu 6 Kategorien aus oder klicke auf den Button, um zufällige Kategorien zu generieren.")
+    st.info("Bitte wähle deine Kategorien aus oder klicke auf den Button, um zufällige Kategorien zu generieren.")
 
 # Funktion zum Generieren eines zufälligen Buchstabens
 def generiere_buchstabe():

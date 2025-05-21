@@ -78,7 +78,7 @@ if st.session_state["ausgewaehlte_kategorien"]:
     for kategorie in st.session_state["ausgewaehlte_kategorien"]:
         st.write(f"- {kategorie}")
 else:
-    st.info("Bitte wähle bis zu 6 Kategorien aus oder klicke auf den Button, um zufällige Kategorien zu generieren.")
+    st.info("Bitte wähle deine Kategorien aus oder klicke auf den Button, um zufällige Kategorien zu generieren.")
 
 # Funktion zum Generieren eines zufälligen Buchstabens
 def generiere_buchstabe():
