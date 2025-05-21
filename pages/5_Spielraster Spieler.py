@@ -73,13 +73,19 @@ if st.button("Spiel beenden"):
     kategorien = [st.session_state.get(f"zeile_{j}", f"Kategorie {j+1}") for j in range(anzahl_spalten)]
     daten = []
     for i in range(anzahl_zeilen):
-        zeile = {"timestamp": helpers.ch_now(), "Runde": i+1}
+        eintraege = []
         for j, kategorie in enumerate(kategorien):
             wort = st.session_state.get(f"wort_{i}_{j}", "")
             punkte = st.session_state.get(f"punkte_{i}_{j}", 0)
-            zeile[f"{kategorie}_Wort"] = wort
-            zeile[f"{kategorie}_Punkte"] = punkte
-        zeile["Total"] = sum(st.session_state.get(f"punkte_{i}_{j}", 0) for j in range(anzahl_spalten))
+            # Kombiniere Wort und Punkte als String, z.B. "Stadt: Zürich (5)"
+            eintrag = f"{kategorie}: {wort} ({punkte})"
+            eintraege.append(eintrag)
+        zeile = {
+            "timestamp": helpers.ch_now(),
+            "Runde": i + 1,
+            "Kategorien": ", ".join(eintraege),
+            "Total": sum(st.session_state.get(f"punkte_{i}_{j}", 0) for j in range(anzahl_spalten))
+        }
         daten.append(zeile)
     df = pd.DataFrame(daten)
     # Speichere jede Zeile als Record
@@ -87,19 +93,8 @@ if st.button("Spiel beenden"):
     for _, row in df.iterrows():
         DataManager().append_record(session_state_key="data_df", record_dict=row.to_dict())
     st.success("Die Spieldaten wurden gespeichert! Gehe zur nächsten Seite, um die Ergebnisse zu sehen.")
-    # Erstelle das Dictionary 'result' mit den aktuellen Daten
-    #result_dict = {
-    #"timestamp": helpers.ch_now(),
-    #"Punkte": punkte,
-    #"Total": gesamt_total,
-    #"Runden": anzahl_zeilen
-    #"timestamp": pd.Timestamp.now()
-#}
-    # Speichere die Daten persistent mit DataManager
-    #from utils.data_manager import DataManager
-    #DataManager().append_record(session_state_key="data_df", record_dict=result_dict)
 
-    #st.success("Die Spieldaten wurden gespeichert! Gehe zur nächsten Seite, um die Ergebnisse zu sehen.")
+
 if st.button("Ergebnisse anzeigen"):
     st.switch_page("pages/3_Ergebnisse.py")
 if st.button("Modus wechseln"):

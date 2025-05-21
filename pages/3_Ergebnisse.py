@@ -79,21 +79,4 @@ if st.button("Zurück zu den Spielmodi"):
         #if "Total" in daten_spiel:
             #daten.append({"Spiel": spiel, "Gesamtpunkte": daten_spiel["Total"]})
 
-#if data_df:
-    #df = pd.DataFrame(daten)
-
-    # Liniendiagramm für die Gesamtpunktzahl
-        #st.subheader("Gesamtpunktzahl pro Spiel")
-        #fig, ax = plt.subplots()
-        #ax.plot(df["Spiel"], df["Gesamtpunkte"], marker="o", linestyle="-", color="b")
-        #ax.set_xlabel("Spiel")
-        #ax.set_ylabel("Gesamtpunkte")
-        #ax.set_title("Gesamtpunktzahl pro Spiel")
-        #ax.grid(True)
-        #st.pyplot(fig)
-#else:
-    #st.warning("Es gibt keine Daten, um ein Diagramm zu erstellen.")
-#else:
-    #st.info("Es wurden noch keine Spieldaten gespeichert.")
-
 
