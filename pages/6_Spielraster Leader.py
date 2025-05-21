@@ -132,7 +132,8 @@ if st.button("Spiel beenden"):
     "Punkte": punkte,
     "Total": gesamt_total,
     "Runden": anzahl_zeilen,
-    "Buchstabe": st.session_state["buchstabe"]
+    "Buchstabe": st.session_state["buchstabe"],
+    "Modus": "Leader"
     #"timestamp": pd.Timestamp.now()
 }
     # Speichere die Daten persistent mit DataManager

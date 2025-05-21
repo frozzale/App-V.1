@@ -24,25 +24,7 @@ import random
 import string
 import pandas as pd
 
-#def speichere_spieldaten(kategorien, punkte, runden):
-    #"""
-    #Speichert die Spieldaten in den Session State.
 
-    #Args:
-        #kategorien (list): Die ausgewählten Kategorien.
-        #punkte (list): Die Punkte der aktuellen Runde.
-        #runden (int): Die Anzahl der gespielten Runden.
-        #Buchstabe (str): Der generierte Buchstabe.
-    #"""
-  
-    #if "spieldaten" not in st.session_state:
-        #st.session_state["spieldaten"] = []
-
-    # Speichere die Daten als Dictionary
-    #runden_daten = {"Kategorien": kategorien, "Punkte": punkte, "Runden": runden, "timestamp": pd.Timestamp.now()}
-    #st.session_state["spieldaten"].append(runden_daten)
-
-# Liste der Kategorien mit Übertiteln
 
 # Initialisiere den Session State für die Kategorien
 if "ausgewaehlte_kategorien" not in st.session_state:
@@ -133,10 +115,10 @@ if st.button("Spiel beenden"):
     "Punkte": punkte,
     "Total": sum(punkte),
     "Runden": anzahl_runden,
-    "Buchstabe": st.session_state["buchstabe"]
+    "Buchstabe": st.session_state["buchstabe"],
+    "Modus": "Manuell"
     #"timestamp": pd.Timestamp.now()
 }
-
 # Speichere die Daten persistent mit DataManager
     from utils.data_manager import DataManager
     DataManager().append_record(session_state_key="data_df", record_dict=result_dict)

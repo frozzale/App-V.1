@@ -84,7 +84,8 @@ if st.button("Spiel beenden"):
             "timestamp": helpers.ch_now(),
             "Runde": i + 1,
             "Kategorien": ", ".join(eintraege),
-            "Total": sum(st.session_state.get(f"punkte_{i}_{j}", 0) for j in range(anzahl_spalten))
+            "Total": sum(st.session_state.get(f"punkte_{i}_{j}", 0) for j in range(anzahl_spalten)),
+            "Modus": "Spieler"
         }
         daten.append(zeile)
     df = pd.DataFrame(daten)
