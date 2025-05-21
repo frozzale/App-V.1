@@ -47,7 +47,7 @@ st.title('Stadt, Land, Fluss')
 name = st.session_state.get('name', 'Gast')
 st.markdown(f"✨ Hallo {name}! ✨")
 st.write("In dieser Version der App hast du verschiedene Möglichkeiten, Stadt, Land, Fluss zu spielen.")
-st.info("""Diese App ist noch in der Entwicklung und deshalb nicht abschliessend.""")
+st.info("""In dieser App kannst du dich ausschliesslich über Buttons bewegen.""")
 st.markdown("""
         Informationen zum Spiel: 
         - Das Spiel wird entweder auf Papier oder direkt in der App gespielt, je nach dem für welchen Modus du dich entscheidest.

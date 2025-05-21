@@ -1,3 +1,16 @@
+import streamlit as st
+
+st.set_page_config(initial_sidebar_state="collapsed")
+
+st.markdown(
+    """
+    <style>
+        [data-testid="stSidebar"] {display: none !important;}
+        [data-testid="collapsedControl"] {display: none !important;}
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 # ====== Start Login Block ======
 from utils.login_manager import LoginManager
 LoginManager().go_to_login('Start.py') 
