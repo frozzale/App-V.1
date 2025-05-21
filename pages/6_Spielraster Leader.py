@@ -129,5 +129,7 @@ if st.button("Spiel beenden"):
     st.success("Die Spieldaten wurden gespeichert! Gehe zur nächsten Seite, um die Ergebnisse zu sehen.")
 if st.button("Ergebnisse anzeigen"):
     st.switch_page("pages/3_Ergebnisse.py")
+if st.button("Modus wechseln"):
+    st.switch_page("pages/1_Verschiedene Modi.py")
 if st.button("Home"):
     st.switch_page("Start.py")
