@@ -35,7 +35,7 @@ if "buchstabe" not in st.session_state:
     st.session_state["buchstabe"] = ""
 
 # Streamlit App
-st.header("Stadt, Land, Fluss - Manueller Modus")
+st.header("Stadt, Land, Fluss - Manueller Modus:pencil:")
 
 # Anzahl der gewünschten Kategorien wählen
 anzahl_kategorien = st.number_input(

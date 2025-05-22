@@ -33,7 +33,7 @@ if data_df.empty:
     st.stop()
 
 # --- Liniengrafik: Totalpunkte pro Spiel, gruppiert nach Modus ---
-st.subheader("Verlauf der Totalpunkte pro Modus")
+st.subheader("Verlauf der Totalpunkte pro Modus:chart_with_upwards_trend:")
 
 if "Total" in data_df.columns and "Modus" in data_df.columns:
     df_plot = data_df.copy()
@@ -66,7 +66,7 @@ st.dataframe(anzeige_df)
 #st.dataframe(anzeige_df)
 
 # ---- Häufigkeit der gespielten Kategorien ----
-st.subheader("Häufigkeit der gespielten Kategorien (nur Manuell & Leader)")
+st.subheader("Häufigkeit der gespielten Kategorien (nur Manuell & Leader):bar_chart:")
 
 # Nur Daten aus Manuell & Leader
 kategorien_df = data_df[data_df["Modus"].isin(["Manuell", "Leader"])]
@@ -85,7 +85,7 @@ else:
     st.info("Es wurden noch keine Kategorien gespielt.")
 
 if "Buchstabe" in data_df.columns:
-    st.subheader("Häufigkeit der gezogenen Buchstaben")
+    st.subheader("Häufigkeit der gezogenen Buchstaben:bar_chart:")
     st.bar_chart(data_df["Buchstabe"].value_counts().sort_index())
 
 data_df = st.session_state['data_df']
@@ -93,7 +93,7 @@ if data_df.empty:
     st.info('Keine Daten vorhanden. Bitte zuerst ein Spiel spielen.') 
     st.stop()
 
-st.subheader("Alle eingegebenen Wörter und Punkte")
+st.subheader("Alle eingegebenen Wörter und Punkte:pencil:")
 st.dataframe(data_df)
 
 

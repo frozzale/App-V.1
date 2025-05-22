@@ -90,7 +90,7 @@ if st.session_state["buchstabe"]:
 else:
     st.info("Drücke auf den Button, um einen Buchstaben zu generieren.")
 
-st.title("Flexibles Spielraster: Leader")
+st.title("Flexibles Spielraster: Leader:crown:")
 st.subheader("Erstelle dein eigenes Raster für Stadt, Land, Fluss")
 st.write("Starte damit, die gewählten Kategorien in die Zeilen des Rasters einzutragen.")
 
