@@ -43,7 +43,7 @@ if "page" not in st.session_state:
     st.session_state["page"] = "main"
 
 
-st.title('Stadt, Land, Fluss')
+st.title('Stadt, Land, Fluss:city_sunrise:')
 name = st.session_state.get('name', 'Gast')
 st.markdown(f"✨ Hallo {name}! ✨")
 st.write("In dieser Version der App hast du verschiedene Möglichkeiten, Stadt, Land, Fluss zu spielen.")
