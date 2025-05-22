@@ -22,6 +22,11 @@ import matplotlib.pyplot as plt
 from collections import Counter
 import altair as alt
 
+if st.button("Home"):
+    st.switch_page("Start.py")
+if st.button("Zurück zu den Spielmodi"):
+    st.switch_page("pages/1_Verschiedene Modi.py")
+
 data_df = st.session_state['data_df']
 if data_df.empty:
     st.info('Keine Daten vorhanden. Bitte zuerst ein Spiel spielen.') 
@@ -91,10 +96,6 @@ if data_df.empty:
 st.subheader("Alle eingegebenen Wörter und Punkte")
 st.dataframe(data_df)
 
-if st.button("Home"):
-    st.switch_page("Start.py")
-if st.button("Zurück zu den Spielmodi"):
-    st.switch_page("pages/1_Verschiedene Modi.py")
 
 
 
