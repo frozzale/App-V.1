@@ -42,6 +42,24 @@ import streamlit as st
 if "page" not in st.session_state:
     st.session_state["page"] = "main"
 
+# Funktion, um den Hintergrund per Bild-URL zu setzen
+def set_background_from_url(image_url):
+    st.markdown(
+        f"""
+        <style>
+        .stApp {{
+            background-image: url("{image_url}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
+# Deine Bild-URL
+image_url = "https://static.vecteezy.com/ti/fotos-kostenlos/p1/19925285-alt-papier-und-stift-auf-holz-hintergrund-kostenlos-foto.jpg"
 
 st.title('Stadt, Land, Fluss:city_sunrise:')
 name = st.session_state.get('name', 'Gast')

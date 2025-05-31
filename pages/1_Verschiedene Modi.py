@@ -19,7 +19,7 @@ LoginManager().go_to_login('Start.py')
 import streamlit as st
 
 
-st.title("Verschiedene Modi")
+st.title("Verschiedene Modi:crossed_swords:")
 st.subheader("Hier kannst du dir einen Überblick über die verschiedenen Modi verschaffen und dich für einen Modus entscheiden.")
 
 st.write("Folgende Modi stehen dir zur Verfügung:")
