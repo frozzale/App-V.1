@@ -59,12 +59,6 @@ anzeige_df = data_df[data_df["Modus"].isin(["Leader", "Spieler"])]
 st.subheader("Alle eingegebenen Wörter und Punkte (nur Leader & Spieler)")
 st.dataframe(anzeige_df)
 
-# ---- NUR Spielraster Leader & Spieler für die Tabelle ----
-#anzeige_df = data_df[data_df["Modus"].isin(["Leader", "Spieler"])]
-
-#st.subheader("Alle eingegebenen Wörter und Punkte (nur Leader & Spieler)")
-#st.dataframe(anzeige_df)
-
 # ---- Häufigkeit der gespielten Kategorien ----
 st.subheader("Häufigkeit der gespielten Kategorien (nur Manuell & Leader):bar_chart:")
 

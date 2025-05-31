@@ -25,7 +25,6 @@ import string
 import pandas as pd
 
 
-
 # Initialisiere den Session State für die Kategorien
 if "ausgewaehlte_kategorien" not in st.session_state:
     st.session_state["ausgewaehlte_kategorien"] = []
@@ -62,7 +61,6 @@ ausgewaehlte_kategorien = st.multiselect(
 # Button zum Übernehmen der Auswahl
 if st.button("Kategorien übernehmen"):
     st.session_state["ausgewaehlte_kategorien"] = ausgewaehlte_kategorien
-
 
 
 st.subheader("oder")
