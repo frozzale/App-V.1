@@ -84,6 +84,8 @@ st.markdown("""
             - 0 Punkte für kein Wort oder ein falsches Wort
     """)
 
+if st.button("Mein Spielerprofil"):
+    st.switch_page("pages/6_Mein Spielerprofil.py")
 
 if st.button("Zu den verschiedenen Spielmodi"):
     st.switch_page("pages/1_Verschiedene Modi.py")
