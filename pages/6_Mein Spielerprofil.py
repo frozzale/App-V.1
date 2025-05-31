@@ -73,6 +73,12 @@ else:
 
 st.subheader("Deine Spielerlebnisse")
 
+# Vor dem ersten Zugriff auf die Erlebnisse:
+if "lustigstes_erlebnis" not in st.session_state:
+    st.session_state["lustigstes_erlebnis"] = ""
+if "liebstes_erlebnis" not in st.session_state:
+    st.session_state["liebstes_erlebnis"] = ""
+
 # Callback-Funktionen für automatisches Speichern
 def save_lustigstes():
     st.session_state["lustigstes_erlebnis"] = st.session_state["lustigstes_erlebnis_input"]
