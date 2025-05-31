@@ -59,10 +59,11 @@ def set_background_from_url(image_url):
     )
 
 # Deine Bild-URL
-image_url = "https://static.vecteezy.com/ti/fotos-kostenlos/p1/19925285-alt-papier-und-stift-auf-holz-hintergrund-kostenlos-foto.jpg"
+image_url = "https://i.pinimg.com/736x/8d/fa/70/8dfa704a40f3cf8c8e095321495ca60a.jpg" 
 
 # Hintergrund setzen
 set_background_from_url(image_url)
+
 
 
 st.title('Stadt, Land, Fluss:city_sunrise:')
