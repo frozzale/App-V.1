@@ -22,7 +22,7 @@ from utils.data_manager import DataManager
 from utils import helpers
 import pandas as pd
 
-st.title("Flexibles Spielraster: Spieler:video_game:")
+st.title("Flexibles Spielraster: Spieler:chess_pawn:")
 st.subheader("Erstelle dein eigenes Raster für Stadt, Land, Fluss")
 st.write("Starte damit, die gewählten Kategorien in die Zeilen des Rasters einzutragen.")
 
