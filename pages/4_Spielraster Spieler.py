@@ -42,7 +42,7 @@ cols = st.columns(anzahl_spalten)
 for j in range(anzahl_spalten):
     with cols[j]:
         #st.text_area(f"Kategorie {j+1}", key=f"zeile_{j}")
-        st.text_area(f"", key=f"zeile_{j}")
+        st.text_area("Kategorie", key=f"zeile_{j}", label_visibility="collapsed")
 with header_cols[-1]:
     st.markdown("**Total**")
 
