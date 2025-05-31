@@ -16,21 +16,28 @@ st.markdown(
 from utils.login_manager import LoginManager
 LoginManager().go_to_login('Start.py')
 
+data_df = st.session_state.get("data_df", pd.DataFrame())
+
+# Hole das zuletzt gespeicherte Profil (Profil-Einträge erkennen wir z.B. daran, dass 'name' gesetzt ist)
+profil_row = None
+if not data_df.empty and "name" in data_df.columns:
+    profil_row = data_df[data_df["name"].notna()].sort_values("timestamp", ascending=False).head(1)
+    if not profil_row.empty:
+        profil_row = profil_row.iloc[0]
+
 st.title("👤 Mein Spielerprofil")
 
 # --- Profilinformationen anzeigen und bearbeiten ---
 st.subheader("Profilinformationen")
 
 # Name bearbeiten
-name = st.session_state.get("name", "")
+name = profil_row["name"] if profil_row is not None else ""
 new_name = st.text_input("Dein Name", value=name)
-if st.button("Name speichern"):
-    st.session_state["name"] = new_name
-    st.success("Name wurde aktualisiert!")
+
 
 # Interessen/Kategorien (optional)
-if "interessen" not in st.session_state:
-    st.session_state["interessen"] = []
+#if "interessen" not in st.session_state:
+#    st.session_state["interessen"] = []
 
 st.subheader("Lieblingskategorien")
 
@@ -123,6 +130,22 @@ if not data_df.empty:
                 st.write(f"{rang_emojis[i]} **{k}** ({n}x)")
 else:
     st.info("Du hast noch keine Spiele gespielt.")
+
+#Alle Änderungen im data.csv speichern
+if st.button("Profil speichern"):
+    #Erstelle das Dictionary 'profil' mit den aktuellen Daten
+    profil_dict = {
+        "timestamp": pd.Timestamp.now(),
+        "name": st.session_state.get("name", ""),
+        "interessen": ", ".join(st.session_state.get("interessen", [])),
+        "lustigstes_erlebnis": st.session_state.get("lustigstes_erlebnis", ""),
+        "liebstes_erlebnis": st.session_state.get("liebstes_erlebnis", "")
+    }
+# Speichere die Daten persistent mit DataManager
+    from utils.data_manager import DataManager
+    DataManager().append_record(session_state_key="data_df", record_dict=profil_dict)
+
+    st.success("Die Spieldaten wurden gespeichert!")
 
 # --- Navigation ---
 st.divider()
