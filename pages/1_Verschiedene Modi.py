@@ -49,10 +49,10 @@ st.markdown("""
             - Auch hier kannst du die Daten speichern und graphisch darstellen lassen.
 """)
 if st.button("Zum Leader Modus"):
-    st.switch_page("pages/6_Spielraster Leader.py")
+    st.switch_page("pages/5_Spielraster Leader.py")
 st.subheader("oder")
 if st.button("Zum Spieler Modus"):
-    st.switch_page("pages/5_Spielraster Spieler.py")
+    st.switch_page("pages/4_Spielraster Spieler.py")
 
 
 
