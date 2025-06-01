@@ -130,6 +130,8 @@ else:
 
 st.badge("Vergiss nicht dein Profil zu speichern, bevor du die Seite verlässt!", icon="💾", color="violet")
 
+if "profil_gespeichert" not in st.session_state:
+    st.session_state["profil_gespeichert"] = False
 
 #Alle Änderungen im profil.csv speichern
 if st.button("Profil speichern"):
@@ -141,8 +143,13 @@ if st.button("Profil speichern"):
         "liebstes_erlebnis": liebstes
     }
     DataManager().append_record(session_state_key="profil_df", record_dict=profil_dict)
-    st.success("Das Profil wurde gespeichert!")
+    st.session_state["profil_gespeichert"] = True
     st.rerun()  # Seite neu laden, um Änderungen anzuzeigen
+
+# Nach dem Rerun: Pop-up anzeigen
+if st.session_state.get("profil_gespeichert", False):
+    st.toast("✅ Dein Profil wurde erfolgreich gespeichert!", icon="💾")
+    st.session_state["profil_gespeichert"] = False
 
 # --- Navigation ---
 st.divider()
