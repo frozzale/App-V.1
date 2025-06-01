@@ -128,6 +128,9 @@ if not data_df.empty:
 else:
     st.info("Du hast noch keine Spiele gespielt.")
 
+st.badge("Vergiss nicht dein Profil zu speichern, bevor du die Seite verlässt!", icon="💾", color="violet")
+
+
 #Alle Änderungen im profil.csv speichern
 if st.button("Profil speichern"):
     profil_dict = {
@@ -141,7 +144,6 @@ if st.button("Profil speichern"):
     st.success("Das Profil wurde gespeichert!")
     st.rerun()  # Seite neu laden, um Änderungen anzuzeigen
 
-st.badge("Vergiss nicht dein Profil zu speichern, bevor du die Seite verlässt!", icon="💾", color="violet")
 # --- Navigation ---
 st.divider()
 if st.button("Zurück zur Startseite"):
