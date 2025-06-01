@@ -4,9 +4,9 @@
 von Alicia, Alessia und Elena
 
 
-Für den Leistungsnachweis in Informatik entwickeln wir eine App mit der man sich unterhalten kann. Dies geschieht durch ein Spiel, dass man in einer Gruppe oder auch alleine spielen kann. Das Spiel ist Stadt, Land, Fluss. Unser Ziel ist es,  dass die Spieler am Schluss gar kein Stift und Papier mehr brauchen, sondern nur noch unseren Link. In der App kann man verschiedene Kategorien und ein Buchstabe  generieren. Die Kategorien sind nicht nur die 3, die jeder kennt (Stadt, Land, Fluss) sondern sind etwas ausgefallener (Olympischer Sport, Scheidungsgrund, Kosenamen, etc.). So ist das Spiel interessanter und bleibt spannend. Die App kann auch auf dem Handy geöffnet werden, da nicht jeder immer einen Laptop dabei hat. Auch haben wir einen «random» Button erstellt, sodass der Spieler nicht selber Kategorien auswählen muss und es interessant bleibt. Nebst dem Spielspass gibt es ebenfalls ein Spielerprofil, das individuell angepasst werden kann. 
+Für den Leistungsnachweis in Informatik entwickeln wir eine App, mit der man sich unterhalten kann. Dies geschieht durch ein Spiel, das man in einer Gruppe oder auch alleine spielen kann. Das Spiel ist «Stadt, Land, Fluss». Diese App soll eine Unterstützung des Spiels sein oder gar den ganzen Spielspass enthalten. Auch ist es uns wichtig, dass die Spieler:innen am Schluss gar kein Stift und Papier mehr benötigen, sondern nur noch über unseren Link spielen können. In der App kann man verschiedene Kategorien und einen Buchstaben generieren. Die Kategorien beinhalten nicht nur die drei, die jeder kennt (Stadt, Land, Fluss) sondern ausgefallenere, lustigere  (Olympische Disziplin, Scheidungsgrund, Kosenamen, etc.). So ist das Spiel interessanter und bleibt spannend. Die App kann auch auf dem Handy geöffnet werden, da man nicht immer einen Laptop dabei hat. Auch haben wir einen «Random» Button erstellt, sodass der Spieler nicht selber Kategorien auswählen muss und es abwechslungsreich bleibt. Nebst dem Spielspass gibt es ebenfalls ein Spielerprofil, das individuell angepasst werden kann. 
 
-Emails:
+E-Mails:
 - muellel3@students.zhaw.ch
 - frozzale@students.zhaw.ch
 - cardoali@students.zhaw.ch
