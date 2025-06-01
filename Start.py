@@ -83,6 +83,8 @@ st.markdown("""
             - 1 Punkt für ein Wort, das auch andere Spieler:innen haben
             - 0 Punkte für kein Wort oder ein falsches Wort
     """)
+st.markdown("Du hast ebenfalls die Möglichkeit, dein Spielerprofil anzusehen und zu bearbeiten. Du kannst dort deine Lieblingskategorien auswählen, dein lustigstes Erlebnis und dein liebstes Erlebnis festhalten.")
+st.write("Am besten beginnst du einfach mit einem Spiel, um die App kennenzulernen. Viel Spass! :smiley:")
 
 if st.button("Mein Spielerprofil"):
     st.switch_page("pages/6_Mein Spielerprofil.py")
