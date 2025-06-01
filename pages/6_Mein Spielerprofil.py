@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+from utils.data_manager import DataManager
 
 st.set_page_config(initial_sidebar_state="collapsed")
 
@@ -16,7 +17,15 @@ st.markdown(
 from utils.login_manager import LoginManager
 LoginManager().go_to_login('Start.py')
 
-
+# Profildaten laden (eigene Datei)
+DataManager().load_user_data(
+    session_state_key='profil_df',
+    file_name='profil.csv',
+    initial_value=pd.DataFrame(),
+    parse_dates=['timestamp'],
+    encoding='latin-1'
+)
+profil_df = st.session_state.get("profil_df", pd.DataFrame())
 
 st.title("👤 Mein Spielerprofil")
 
@@ -101,7 +110,7 @@ if not data_df.empty:
 else:
     st.info("Du hast noch keine Spiele gespielt.")
 
-#Alle Änderungen im data.csv speichern
+#Alle Änderungen im profil.csv speichern
 if st.button("Profil speichern"):
     profil_dict = {
         "timestamp": pd.Timestamp.now(),
@@ -110,8 +119,7 @@ if st.button("Profil speichern"):
         "lustigstes_erlebnis": lustigstes,
         "liebstes_erlebnis": liebstes
     }
-    from utils.data_manager import DataManager
-    DataManager().append_record(session_state_key="data_df", record_dict=profil_dict)
+    DataManager().append_record(session_state_key="profil_df", record_dict=profil_dict)
     st.success("Das Profil wurde gespeichert!")
 
 # --- Navigation ---
