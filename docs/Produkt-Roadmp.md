@@ -16,6 +16,7 @@ Stadt, Land, Fluss:
 3. Graphen zur Veranschaulichung der gespeicherten Daten (30min)
 4. Auswahl mit wie vielen Kategorien man spielen möchte (1h)
 
-# Version 4.0 – Modus (5-6h)
+# Version 4.0 – Modus (6-7h)
 1. Anwählen, ob man der Leader oder nur Mitspieler ist (1h)
-2. Bei Leader, alle Funktionen und bei Mitspieler ein leeres Raster zum Eintippen (Raster Anzahl anwählen) (4-5h)
+2. Bei Leader, alle Funktionen und bei Mitspieler ein leeres Raster zum Eintippen (Raster Anzahl anwählen) (3-4h)
+3. Nutzerspezifisches Speielprofil mit Funktionen: Änderung des Namen, Lieblingskategorie, Lustigstes Spielerlebnis, Liebstes Spielerlebnis (2h)
