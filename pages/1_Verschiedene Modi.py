@@ -28,15 +28,15 @@ st.write("Wichtige Punkte zu diesem Modus:")
 st.markdown("""
             - In diesem Modus spielst du das Spiel mit Stift und Papier. Also ganz klassisch.
             - Zeichne dir auf ein Blatt Papier ein Raster mit den gewählten Kategorien, die gewünschte Anzahl Runden und eine Spalte für die Punkte.
-            - Es werden insgesamt 6 Kategorien ausgewählt und ein Buchstabe generiert. 
-            - Die Punkte pro Runde kannst du dann manuell eingeben und es wird dir am Ende des Spiels das Total angezeigt.
-            - Nach dem Eintragen der Punkte kannst du die Daten speichern und graphisch darstellen lassen.
+            - Wähle aus, mit wie vielen Kategorien du spielen möchtest und wähle sie aus. Wenn ihr bereit seid, dann generiere den Buchstaben. 
+            - Die Punkte pro Runde kannst du dann direkt in die App eingeben und es wird dir am Ende des Spiels das Total angezeigt.
+            - Nach dem Eintragen der Punkte kannst du die Daten speichern und grafisch darstellen lassen.
 """)
 if st.button("Zum manuellen Modus"):
     st.switch_page("pages/2_Manueller Modus.py")
-
+st.divider()
 st.badge("Leader und Spieler Modus", color="blue")
-st.write("Wichtige Punkte zu diesem Modus:")
+st.write("Wichtige Punkte zu diesen Modi:")
 st.markdown("""
             - In diesem Modus kannst du das Spiel entweder als Spieler oder als Leader spielen.
             - Der Leader hat alle wichtigen Funktionen, um das Spiel zu starten und leiten. Es braucht daher nur einen Leader.
