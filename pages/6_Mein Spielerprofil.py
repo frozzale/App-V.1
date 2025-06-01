@@ -48,7 +48,7 @@ else:
     liebstes_erlebnis = ""
 
 # Name bearbeiten
-#name = st.session_state.get("name", "")
+name = st.session_state.get("name", "")
 new_name = st.text_input("Dein Name", value=name)
 
 
