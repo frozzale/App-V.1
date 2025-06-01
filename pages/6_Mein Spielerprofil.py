@@ -64,30 +64,35 @@ alle_kategorien = [
     "Olympische Disziplin", "Jugendwort", "Superkraft", "Haustiernamen", "Reiseziel", "Babynamen"
 ]
 
-# Multiselect für Auswahl
-auswahl = st.multiselect(
+# Multiselect für neue Auswahl (wird erst beim Speichern übernommen)
+neue_auswahl = st.multiselect(
     "Wähle deine Lieblingskategorien aus:",
     options=alle_kategorien,
     default=interessen
 )
 
-# Anzeige der gespeicherten Lieblingskategorien als Tabelle mit Löschen-Button
-if auswahl:
+# Anzeige der aktuell gespeicherten Lieblingskategorien mit Löschen-Button
+if interessen:
     st.markdown("**Deine gespeicherten Lieblingskategorien:**")
-    for idx, kategorie in enumerate(auswahl):
+    for idx, kategorie in enumerate(interessen):
         cols = st.columns([3, 1])
         cols[0].write(kategorie)
         if cols[1].button("Löschen", key=f"del_{kategorie}_{idx}"):
-            neue_auswahl = auswahl.copy()
-            neue_auswahl.pop(idx)
+            neue_interessen = interessen.copy()
+            neue_interessen.pop(idx)
+            profil_dict = {
+                "timestamp": pd.Timestamp.now(),
+                "name": name,
+                "interessen": ", ".join(neue_interessen),
+                "lustigstes_erlebnis": lustigstes_erlebnis,
+                "liebstes_erlebnis": liebstes_erlebnis
+            }
+            DataManager().append_record(session_state_key="profil_df", record_dict=profil_dict)
+            st.rerun()
 else:
     st.markdown("_Noch keine Lieblingskategorien gespeichert._")
 
 st.subheader("Deine Spielerlebnisse")
-
-# Hole gespeicherte Erlebnisse oder setze auf leeren String
-#lustigstes_erlebnis = st.session_state.get("lustigstes_erlebnis", "")
-#liebstes_erlebnis = st.session_state.get("liebstes_erlebnis", "")
 
 lustigstes = st.text_area(
     "Was war dein lustigstes Erlebnis im Spiel?:rolling_on_the_floor_laughing:",
@@ -128,13 +133,15 @@ if st.button("Profil speichern"):
     profil_dict = {
         "timestamp": pd.Timestamp.now(),
         "name": new_name,
-        "interessen": ", ".join(auswahl),
+        "interessen": ", ".join(neue_auswahl),
         "lustigstes_erlebnis": lustigstes,
         "liebstes_erlebnis": liebstes
     }
     DataManager().append_record(session_state_key="profil_df", record_dict=profil_dict)
     st.success("Das Profil wurde gespeichert!")
+    st.rerun()  # Seite neu laden, um Änderungen anzuzeigen
 
+st.badge("Vergiss nicht dein Profil zu speichern, bevor du die Seite verlässt!", icon="💾", color="violet")
 # --- Navigation ---
 st.divider()
 if st.button("Zurück zur Startseite"):
