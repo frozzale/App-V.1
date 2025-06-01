@@ -24,7 +24,6 @@ import random
 import string
 import pandas as pd
 
-
 # Initialisiere den Session State für die Kategorien
 if "ausgewaehlte_kategorien" not in st.session_state:
     st.session_state["ausgewaehlte_kategorien"] = []
@@ -61,7 +60,6 @@ ausgewaehlte_kategorien = st.multiselect(
 # Button zum Übernehmen der Auswahl
 if st.button("Kategorien übernehmen"):
     st.session_state["ausgewaehlte_kategorien"] = ausgewaehlte_kategorien
-
 
 st.subheader("oder")
 
@@ -127,7 +125,6 @@ if st.button("Spiel beenden"):
     "Runden": anzahl_runden,
     "Buchstabe": st.session_state["buchstabe"],
     "Modus": "Manuell"
-    #"timestamp": pd.Timestamp.now()
 }
 # Speichere die Daten persistent mit DataManager
     from utils.data_manager import DataManager

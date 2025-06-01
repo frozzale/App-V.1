@@ -54,7 +54,5 @@ st.subheader("oder")
 if st.button("Zum Spieler Modus"):
     st.switch_page("pages/4_Spielraster Spieler.py")
 
-
-
 if st.button("Home"):
     st.switch_page("Start.py")

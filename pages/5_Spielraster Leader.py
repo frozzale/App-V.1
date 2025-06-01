@@ -58,8 +58,6 @@ ausgewaehlte_kategorien = st.multiselect(
 if st.button("Kategorien übernehmen"):
     st.session_state["ausgewaehlte_kategorien"] = ausgewaehlte_kategorien
 
-
-
 st.subheader("oder")
 
 # Zufällige Auswahl von Kategorien
@@ -146,7 +144,6 @@ if st.button("Spiel beenden"):
     "Runden": anzahl_zeilen,
     "Buchstabe": st.session_state["buchstabe"],
     "Modus": "Leader"
-    #"timestamp": pd.Timestamp.now()
 }
     # Speichere die Daten persistent mit DataManager
     from utils.data_manager import DataManager

@@ -51,10 +51,6 @@ else:
 name = st.session_state.get("name", "")
 new_name = st.text_input("Dein Name", value=name)
 
-
-# Interessen/Kategorien (optional)
-#interessen = st.session_state.get("interessen", [])
-
 st.subheader("Lieblingskategorien")
 
 # --- Lieblingskategorien auswählen, speichern, anzeigen und entfernen ---
