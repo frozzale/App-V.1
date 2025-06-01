@@ -34,13 +34,26 @@ st.subheader("Profilinformationen")
 
 data_df = st.session_state.get("data_df", pd.DataFrame())
 
+# Hole das zuletzt gespeicherte Profil aus profil_df
+if not profil_df.empty:
+    profil_row = profil_df.sort_values("timestamp", ascending=False).iloc[0]
+    name = profil_row["name"] if "name" in profil_row else ""
+    interessen = profil_row["interessen"].split(", ") if "interessen" in profil_row and pd.notna(profil_row["interessen"]) and profil_row["interessen"] else []
+    lustigstes_erlebnis = profil_row["lustigstes_erlebnis"] if "lustigstes_erlebnis" in profil_row and pd.notna(profil_row["lustigstes_erlebnis"]) else ""
+    liebstes_erlebnis = profil_row["liebstes_erlebnis"] if "liebstes_erlebnis" in profil_row and pd.notna(profil_row["liebstes_erlebnis"]) else ""
+else:
+    name = ""
+    interessen = []
+    lustigstes_erlebnis = ""
+    liebstes_erlebnis = ""
+
 # Name bearbeiten
-name = st.session_state.get("name", "")
+#name = st.session_state.get("name", "")
 new_name = st.text_input("Dein Name", value=name)
 
 
 # Interessen/Kategorien (optional)
-interessen = st.session_state.get("interessen", [])
+#interessen = st.session_state.get("interessen", [])
 
 st.subheader("Lieblingskategorien")
 
@@ -73,8 +86,8 @@ else:
 st.subheader("Deine Spielerlebnisse")
 
 # Hole gespeicherte Erlebnisse oder setze auf leeren String
-lustigstes_erlebnis = st.session_state.get("lustigstes_erlebnis", "")
-liebstes_erlebnis = st.session_state.get("liebstes_erlebnis", "")
+#lustigstes_erlebnis = st.session_state.get("lustigstes_erlebnis", "")
+#liebstes_erlebnis = st.session_state.get("liebstes_erlebnis", "")
 
 lustigstes = st.text_area(
     "Was war dein lustigstes Erlebnis im Spiel?:rolling_on_the_floor_laughing:",
