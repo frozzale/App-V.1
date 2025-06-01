@@ -59,15 +59,18 @@ def set_background_from_url(image_url):
     )
 
 # Deine Bild-URL
-image_url = "https://i.pinimg.com/736x/8d/fa/70/8dfa704a40f3cf8c8e095321495ca60a.jpg" 
-#image_url = "https://i.pinimg.com/736x/17/d8/74/17d87486c848eed7572a22c3c65c3b46.jpg"
+#image_url = "https://i.pinimg.com/736x/8d/fa/70/8dfa704a40f3cf8c8e095321495ca60a.jpg" 
+image_url = "https://i.pinimg.com/736x/f6/61/a2/f661a204580f416ecc8f8fc127805757.jpg"
 
 # Hintergrund setzen
 set_background_from_url(image_url)
 
 
 
-st.title('Stadt, Land, Fluss:city_sunrise:')
+st.markdown(
+    "<h1 style='text-align: center;'>Stadt, Land, Fluss🌇",
+    unsafe_allow_html=True
+)
 name = st.session_state.get('name', 'Gast')
 st.markdown(f"✨ Hallo {name}! ✨")
 st.write("In dieser Version der App hast du verschiedene Möglichkeiten, Stadt, Land, Fluss zu spielen.")
