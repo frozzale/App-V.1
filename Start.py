@@ -60,6 +60,7 @@ def set_background_from_url(image_url):
 
 # Deine Bild-URL
 image_url = "https://i.pinimg.com/736x/8d/fa/70/8dfa704a40f3cf8c8e095321495ca60a.jpg" 
+#image_url = "https://i.pinimg.com/736x/17/d8/74/17d87486c848eed7572a22c3c65c3b46.jpg"
 
 # Hintergrund setzen
 set_background_from_url(image_url)
